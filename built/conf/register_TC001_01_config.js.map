@@ -1,0 +1,1 @@
+{"version":3,"file":"register_TC001_01_config.js","sourceRoot":"","sources":["../../src/conf/register_TC001_01_config.ts"],"names":[],"mappings":";;;AAGW,QAAA,MAAM,GAAW;IAGxB,KAAK,EAAE;QACH,0EAA0E;KAC7E;IAGD,SAAS,EAAE,SAAS;IACpB,YAAY,EAAE;QACV,WAAW,EAAE,QAAQ;KACxB;IAED,eAAe,EAAE,8BAA8B;IAC/C,aAAa,EAAE,KAAK;IACpB,wBAAwB,EAAE,KAAK;CAClC,CAAC"}
