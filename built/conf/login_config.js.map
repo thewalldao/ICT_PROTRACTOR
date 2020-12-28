@@ -1,0 +1,1 @@
+{"version":3,"file":"login_config.js","sourceRoot":"","sources":["../../src/conf/login_config.ts"],"names":[],"mappings":";;;AAIW,QAAA,MAAM,GAAW;IAGxB,KAAK,EAAE;QACH,uEAAuE;KAC1E;IAGD,SAAS,EAAE,SAAS;IACpB,YAAY,EAAE;QACV,WAAW,EAAE,QAAQ;KACxB;IAED,eAAe,EAAE,8BAA8B;IAC/C,aAAa,EAAE,KAAK;IACpB,wBAAwB,EAAE,KAAK;CAClC,CAAC"}
