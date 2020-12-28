@@ -1,36 +1,157 @@
-import { by, element } from "protractor";
+import { browser, by, element, protractor } from "protractor";
+import { General } from "../Utilities/general";
 import { User } from "./User";
 
-export class RegisterPage{
+export class RegisterPage {
     private _usernameField: string = "//input[@id='Username']";
     private _emailField: string = "//input[@id='Email']";
     private _passwordField: string = "//input[@id='Password']";
     private _comfirmPasswordField: string = "//input[@id='ConfirmPass']";
-    private _submitButton: string = "//input[@id='//button[@id='btnSaveUser']";
+    private _submitButton: string = "//button[@id='btnSaveUser']";
+    private PE = protractor.ExpectedConditions;
 
     private _passwordFieldError: string = "//input[contains(@class,'ng-invalid')][@id='Password']";
     private _comfirmPasswordFieldError: string = "//input[contains(@class,'ng-invalid')][@id='ConfirmPass']";
     private _usernameFieldError: string = "//input[contains(@class,'is-invalid')][@id='Username']";
     private _emailFieldError: string = "//input[contains(@class,'is-invalid')][@id='Email']";
 
-    private _matErrorIconNotLowerChar:string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[.='contains at least one lower character']"
-    private _matErrorIconNotUpperChar:string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[.='contains at least one upper character']"
-    private _matErrorIconNotDigitChar:string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[.='contains at least one digit character']"
-    private _matErrorIconNotSpecialChar:string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[.='contains at least one special character']"
-    private _matErrorIconLessThanEightChar:string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[.='ccontains at least 8 characters']"
+    private _matErrorNotLowerChar: string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[contains(text(),'lower')]"
+    private _matErrorNotUpperChar: string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[contains(text(),'upper')]"
+    private _matErrorNotDigitChar: string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[contains(text(),'digit')]"
+    private _matErrorNotSpecialChar: string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[contains(text(),'special')]"
+    private _matErrorLessThanEightChar: string = "//mat-icon[contains(@class,'negativeState')]//following-sibling::span[contains(text(),'8')]"
 
-    private _matIconHaveInputLowerChar:string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[.='contains at least one lower character']"
-    private _matIconHaveInpuUpperChar:string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[.='contains at least one upper character']"
-    private _matIconHaveInpuDigitChar:string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[.='contains at least one digit character']"
-    private _matIconHaveInpuSpecialChar:string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[.='contains at least one special character']"
-    private _matIconMoreThanEightChar:string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[.='ccontains at least 8 characters']"
+    private _matHaveInputLowerChar: string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[contains(text(),'lower')]"
+    private _matHaveInpuUpperChar: string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[contains(text(),'upper')]"
+    private _matHaveInpuDigitChar: string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[contains(text(),'digit')]"
+    private _matHaveInpuSpecialChar: string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[contains(text(),'special')]"
+    private _matMoreThanEightChar: string = "//mat-icon[contains(@class,'positiveState')]//following-sibling::span[contains(text(),'8')]"
 
-    private _matErrorMessageInvalidPas:string  = "//mat-error[@id='mat-error-16']";
-    private _matErrorMessageRequieComfirmPas:string  = "//mat-error[@id='mat-error-19']";
-    private _matErrorMessagePasswordNotSame:string  = "//mat-error[@id='mat-error-17']";
+    private _matErrorIconNotLowerChar: string = "//span[contains(text(),'lower')]/preceding-sibling::mat-icon[contains(@class,'negativeState')]"
+    private _matErrorIconNotUpperChar: string = "//span[contains(text(),'upper')]/preceding-sibling::mat-icon[contains(@class,'negativeState')]"
+    private _matErrorIconNotDigitChar: string = "//span[contains(text(),'digit')]/preceding-sibling::mat-icon[contains(@class,'negativeState')]"
+    private _matErrorIconNotSpecialChar: string = "//span[contains(text(),'special')]/preceding-sibling::mat-icon[contains(@class,'negativeState')]"
+    private _matErrorIconLessThanEightChar: string = "//span[contains(text(),'8')]/preceding-sibling::mat-icon[contains(@class,'negativeState')]"
+
+    private _matIconHaveLowerChar: string = "//span[contains(text(),'lower')]/preceding-sibling::mat-icon[contains(@class,'positiveState')]"
+    private _matIconHaveUpperChar: string = "//span[contains(text(),'upper')]/preceding-sibling::mat-icon[contains(@class,'positiveState')]"
+    private _matIconHavevDigitChar: string = "//span[contains(text(),'digit')]/preceding-sibling::mat-icon[contains(@class,'positiveState')]"
+    private _matIconHaveSpecialChar: string = "//span[contains(text(),'special')]/preceding-sibling::mat-icon[contains(@class,'positiveState')]"
+    private _matIconHaveMoreThanEightChar: string = "//span[contains(text(),'8')]/preceding-sibling::mat-icon[contains(@class,'positiveState')]"
+
+    private _matErrorMessageInvalidPas: string = "//input[@id='Password']/../../following-sibling::div//mat-error";
+    private _matErrorMessageRequieComfirmPas: string = "//mat-error[@id='mat-error-19']";
+    private _matErrorMessagePasswordNotSame: string = "//mat-error[@id='mat-error-17']";
     private _popupToastErrorMessage: string = "//div[@aria-live='polite'][@class='toast-message ng-star-inserted']";
 
-    public async regiterAccountError(user:User) : Promise<RegisterPage> {
+    public async elementOfUsernameFieldErrorDisplay(): Promise<boolean> {
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._usernameFieldError))), 5000, "element take to long to response")
+            return await element(by.xpath(this._usernameFieldError)).isEnabled();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    public async elementOfPasswordFieldErrorDisplay(): Promise<boolean> {
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotLowerChar))), 5000, "Error icon not include lower char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotUpperChar))), 5000, "Error icon not include upper char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotSpecialChar))), 5000, "Error icon not include special char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotDigitChar))), 5000, "Error icon not include digit char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconLessThanEightChar))), 5000, "Error icon at least 8 characters not display");
+    
+            let check =  (element(by.xpath(this._matErrorIconNotLowerChar)).isDisplayed &&
+                element(by.xpath(this._matErrorIconNotUpperChar)).isDisplayed &&
+                element(by.xpath(this._matErrorIconNotSpecialChar)).isDisplayed &&
+                element(by.xpath(this._matErrorIconNotDigitChar)).isDisplayed &&
+                element(by.xpath(this._matErrorIconLessThanEightChar)).isDisplayed)
+            if(check){
+                return true;
+            }
+            return false;
+
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    public async elementOfEmailFieldErrorDisplay(): Promise<boolean> {
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._emailFieldError))), 5000, "element take to long to response")
+            return await element(by.xpath(this._emailFieldError)).isEnabled();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    public async passwordNotIncludeLowerCharErrorDisplay(): Promise<string> {
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotLowerChar))), 5000, "contains at least one lower character message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotLowerChar))), 5000, "Error icon not include lower char not display");
+            return await element(by.xpath(this._matErrorNotLowerChar)).getText();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+
+    public async passwordNotIncludeUpperCharErrorDisplay(): Promise<string> {
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotUpperChar))), 5000, "contains at least one upper character message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotUpperChar))), 5000, "Error icon not include upper char not display");
+            return await element(by.xpath(this._matErrorNotUpperChar)).getText();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    public async passwordNotIncludeSpecialCharErrorDisplay(): Promise<string> {
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotSpecialChar))), 10000, "contains at least one special character message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotSpecialChar))), 5000, "Error icon not include special char not display");
+            return await element(by.xpath(this._matErrorNotSpecialChar)).getText();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    public async passwordNotIncludeDigitCharErrorDisplay(): Promise<string> {
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotDigitChar))), 5000, "contains at least one digit character message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotDigitChar))), 5000, "Error icon not include digit char not display");
+            return await element(by.xpath(this._matErrorNotDigitChar)).getText();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    public async passwordLessThanEightCharErrorDisplay(): Promise<string> {
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorLessThanEightChar))), 5000, "contains at least 8 characters message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconLessThanEightChar))), 5000, "Error icon at least 8 characters not display");
+            return await element(by.xpath(this._matErrorLessThanEightChar)).getText();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+    public async regiterAccountError(user: User): Promise<RegisterPage> {
+        General.printDescribe("register a error account");
         await element(by.xpath(this._usernameField)).sendKeys(user.getUsername());
         await element(by.xpath(this._emailField)).sendKeys(user.getEmail());
         await element(by.xpath(this._passwordField)).sendKeys(user.getPassWord());
@@ -40,8 +161,4 @@ export class RegisterPage{
 
         return this;
     }
- 
-
-    
-    
 }

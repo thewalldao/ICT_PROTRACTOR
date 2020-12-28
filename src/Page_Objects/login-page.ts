@@ -1,4 +1,5 @@
-import { by, element } from "protractor";
+import { browser, by, element, ElementFinder, protractor } from "protractor";
+import { General } from "../Utilities/general";
 import { ManageTestPage } from "./manage-test-page";
 import { RegisterPage } from "./register-page";
 import { User } from "./user";
@@ -13,9 +14,12 @@ export class LoginPage {
     private _usernameFiled: string = "//input[@id='Username'][@class='form-control']";
     private _passwordField: string = "//input[@id='Password'][@class='form-control']";
     private _loginButton: string = "//button[@id='logIn'][@class='btn btn-primary btn-block']";
-    private _register: string = "//div[@class='row'][@_ngcontent-gom-c7]/button[@type='button']";
+    private _register: string = "//div[@class='row']/button[@type='button']";
+    private PE = protractor.ExpectedConditions;
 
-
+    protected elementOfRegiter(){
+        return element(by.xpath(this._register));
+    } 
 
     public loginButtonElement() {
         return element(by.xpath(this._loginButton));
@@ -30,8 +34,18 @@ export class LoginPage {
     }
 
     public async gotoRegisterPage(): Promise<RegisterPage> {
-        await element(by.xpath(this._register)).click();
-        return new RegisterPage()
+        General.printDescribe("go to register page")
+        try {
+            // await browser.sleep(20000)
+            await browser.wait(this.PE.visibilityOf(this.elementOfRegiter()), 10000, "element take to long to response") 
+            await element(by.xpath(this._register)).click();
+            return new RegisterPage()
+        }
+        catch(error){
+            console.log(error);
+        }
+       
+        
     }
 
 }

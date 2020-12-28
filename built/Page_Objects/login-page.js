@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginPage = void 0;
 const protractor_1 = require("protractor");
+const general_1 = require("../Utilities/general");
 const manage_test_page_1 = require("./manage-test-page");
 const register_page_1 = require("./register-page");
 class LoginPage {
@@ -18,7 +19,11 @@ class LoginPage {
         this._usernameFiled = "//input[@id='Username'][@class='form-control']";
         this._passwordField = "//input[@id='Password'][@class='form-control']";
         this._loginButton = "//button[@id='logIn'][@class='btn btn-primary btn-block']";
-        this._register = "//div[@class='row'][@_ngcontent-gom-c7]/button[@type='button']";
+        this._register = "//div[@class='row']/button[@type='button']";
+        this.PE = protractor_1.protractor.ExpectedConditions;
+    }
+    elementOfRegiter() {
+        return protractor_1.element(protractor_1.by.xpath(this._register));
     }
     loginButtonElement() {
         return protractor_1.element(protractor_1.by.xpath(this._loginButton));
@@ -33,8 +38,15 @@ class LoginPage {
     }
     gotoRegisterPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield protractor_1.element(protractor_1.by.xpath(this._register)).click();
-            return new register_page_1.RegisterPage();
+            general_1.General.printDescribe("go to register page");
+            try {
+                yield protractor_1.browser.wait(this.PE.visibilityOf(this.elementOfRegiter()), 10000, "element take to long to response");
+                yield protractor_1.element(protractor_1.by.xpath(this._register)).click();
+                return new register_page_1.RegisterPage();
+            }
+            catch (error) {
+                console.log(error);
+            }
         });
     }
 }

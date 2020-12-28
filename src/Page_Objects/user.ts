@@ -21,10 +21,10 @@ export class User{
     }
 
     public async getEmail():Promise<string>{
-        return this.passWord;
+        return this.email;
     }
 
     public async getPassWordComfirm():Promise<string>{
-        return this.passWord;
+        return this.comfirmPassword;
     }
 }

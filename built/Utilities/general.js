@@ -13,24 +13,16 @@ class General {
         let numberCharacterLength = numberCharacters.length;
         let specialCharactersLength = specialCharacters.length;
         if (up === true) {
-            for (let i = 0; i < 1; i++) {
-                result += upperCharacters.charAt(Math.floor(Math.random() * upperCharacterLength));
-            }
+            result += upperCharacters.charAt(Math.floor(Math.random() * upperCharacterLength));
         }
         if (low === true) {
-            for (let i = 0; i < 1; i++) {
-                result += lowerCharacters.charAt(Math.floor(Math.random() * lowerCharactersLength));
-            }
+            result += lowerCharacters.charAt(Math.floor(Math.random() * lowerCharactersLength));
         }
         if (num === true) {
-            for (let i = 0; i < 7; i++) {
-                result += numberCharacters.charAt(Math.floor(Math.random() * numberCharacterLength));
-            }
+            result += numberCharacters.charAt(Math.floor(Math.random() * numberCharacterLength));
         }
         if (spe === true) {
-            for (let i = 0; i < 1; i++) {
-                result += specialCharacters.charAt(Math.floor(Math.random() * specialCharactersLength));
-            }
+            result += specialCharacters.charAt(Math.floor(Math.random() * specialCharactersLength));
         }
         return result;
     }
@@ -45,6 +37,24 @@ class General {
     }
     static randomSpecialString(length) {
         let result = '';
+        let lowerCharacters = 'abcdefghijklmnopqrstuvwxyz';
+        let lowerCharactersLength = lowerCharacters.length;
+        for (let i = 0; i < length; i++) {
+            result += lowerCharacters.charAt(Math.floor(Math.random() * lowerCharactersLength));
+        }
+        return result;
+    }
+    static randomNumberCharString(length) {
+        let result = '';
+        let numberCharacters = '0123456789';
+        let numberCharacterLength = numberCharacters.length;
+        for (let i = 0; i < length; i++) {
+            result += numberCharacters.charAt(Math.floor(Math.random() * numberCharacterLength));
+        }
+        return result;
+    }
+    static randomLowerCharString(length) {
+        let result = '';
         let specialCharacters = '!@#$%^&*()-_=+';
         let specialCharactersLength = specialCharacters.length;
         for (let i = 0; i < length; i++) {
@@ -53,7 +63,42 @@ class General {
         return result;
     }
     static randomEmail(length) {
-        return (this.makeUserName(length) + 'gmail.com');
+        let email = this.makeUserName(length) + "gmail.com";
+        return email;
+    }
+    static printBox(str) {
+        let strLength = str.length;
+        console.log("=".repeat(strLength + 4));
+        console.log("+ " + str + " +");
+        console.log("=".repeat(strLength + 4));
+        return str;
+    }
+    static printDescribe(str) {
+        let date = new Date();
+        let strTime;
+        let hoursTime;
+        let minuteTime;
+        let secondTime;
+        if (date.getHours() < 10) {
+            hoursTime = `0${date.getHours()}`;
+        }
+        else if (date.getHours() >= 10) {
+            hoursTime = `${date.getHours()}`;
+        }
+        if (date.getMinutes() < 10) {
+            minuteTime = `0${date.getMinutes()}`;
+        }
+        else if (date.getMinutes() >= 10) {
+            minuteTime = `${date.getMinutes()}`;
+        }
+        if (date.getSeconds() < 10) {
+            secondTime = `0${date.getSeconds()}`;
+        }
+        else if (date.getSeconds() >= 10) {
+            secondTime = `${date.getSeconds()}`;
+        }
+        strTime = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} - ${hoursTime}:${minuteTime}:${secondTime}`;
+        console.log(`${strTime} - ${str}`);
     }
 }
 exports.General = General;

@@ -29,12 +29,12 @@ class User {
     }
     getEmail() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.passWord;
+            return this.email;
         });
     }
     getPassWordComfirm() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.passWord;
+            return this.comfirmPassword;
         });
     }
 }
