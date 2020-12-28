@@ -13,7 +13,7 @@ describe('Register Test', function() {
         browser.manage().timeouts().implicitlyWait(5000);
       });
     it('Verify that user cannot register account with special character in username',async () => {
-        let user: User   = new User("@"+General.makeRandomId(10), );
+        let user: User   = new User("@"+General.(10), );
         await loginPage.gotoRegisterPage();
 
 

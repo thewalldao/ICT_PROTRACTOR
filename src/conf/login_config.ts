@@ -1,13 +1,10 @@
-
-
-import ProjectPath from '@test-data/general/project-path';
 import { Config } from 'protractor';
 
 export let config: Config = {
 
 
     specs: [
-        'E:/TUANDAO/PROJECT/INCONTACT_PROTRATOR/incontact_protractor/built/testcases/login-test.js'
+        'E:/TUANDAO/PROJECT/SimpleProtractorTest/built/TestCases/login-test.js'
     ],
 
 

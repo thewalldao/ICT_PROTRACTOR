@@ -17,36 +17,46 @@ export class General {
             }
         }
 
-        if (low === true){
+        if (low === true) {
             for (let i = 0; i < 1; i++) {
                 result += lowerCharacters.charAt(Math.floor(Math.random() * lowerCharactersLength));
             }
         }
 
-        if (num === true){
+        if (num === true) {
             for (let i = 0; i < 7; i++) {
                 result += numberCharacters.charAt(Math.floor(Math.random() * numberCharacterLength));
-            } 
+            }
         }
 
-        if (spe === true){
+        if (spe === true) {
             for (let i = 0; i < 1; i++) {
                 result += specialCharacters.charAt(Math.floor(Math.random() * specialCharactersLength));
-            } 
+            }
         }
-        
+
         return result;
     }
 
-    static async makeUserName(length:number) : Promise<string> {
-        let result           = '';
-        let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    static async makeUserName(length: number): Promise<string> {
+        let result = '';
+        let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let charactersLength = characters.length;
-        for ( var i = 0; i < length; i++ ) {
-           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         return result;
-     }
+    }
+
+    static async randomSpecialString(length: number): Promise<string> {
+        let result = ''
+        let specialCharacters = '!@#$%^&*()-_=+';
+        let specialCharactersLength = specialCharacters.length;
+        for (let i = 0; i < length; i++) {
+            result += specialCharacters.charAt(Math.floor(Math.random() * specialCharactersLength));
+        }
+        return result
+    }
 
 
 }

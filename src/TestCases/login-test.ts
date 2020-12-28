@@ -1,8 +1,8 @@
-import { LoginPage } from "@page-objects/login-page";
-import { ManageTestPage } from "@page-objects/manage-test-page";
-import { User } from "@page-objects/User";
+import { User } from "../Page_Objects/User";
 import { browser } from "protractor";
 import { Login } from "Utilities/Constant";
+import { LoginPage } from "../Page_Objects/login-page";
+import { ManageTestPage } from "../Page_Objects/manage-test-page";
 
 
 describe('Login Test', function() {

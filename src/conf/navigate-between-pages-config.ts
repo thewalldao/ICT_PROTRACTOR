@@ -7,7 +7,7 @@ export let config: Config = {
 
 
     specs: [
-        'E:/TUANDAO/PROJECT/INCONTACT_PROTRATOR/incontact_protractor/built/testcases/navigate-between-pages.js'
+        'E:/TUANDAO/PROJECT/SimpleProtractorTest/built/TestCases/navigate-between-pages.js'
     ],
 
 
