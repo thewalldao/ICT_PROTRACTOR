@@ -30,6 +30,7 @@ class LoginPage {
     }
     loginSuccesful(user) {
         return __awaiter(this, void 0, void 0, function* () {
+            general_1.General.printDescribe("Login");
             yield protractor_1.element(protractor_1.by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
             yield protractor_1.element(protractor_1.by.xpath(this._passwordField)).sendKeys(user.getPassWord());
             yield protractor_1.element(protractor_1.by.xpath(this._loginButton)).click();

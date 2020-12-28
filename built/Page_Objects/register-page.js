@@ -63,11 +63,11 @@ class RegisterPage {
     elementOfPasswordFieldErrorDisplay() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotLowerChar))), 5000, "Error icon not include lower char not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotUpperChar))), 5000, "Error icon not include upper char not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotSpecialChar))), 5000, "Error icon not include special char not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotDigitChar))), 5000, "Error icon not include digit char not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconLessThanEightChar))), 5000, "Error icon at least 8 characters not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotLowerChar))), 10000, "Error icon not include lower char not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotUpperChar))), 10000, "Error icon not include upper char not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotSpecialChar))), 10000, "Error icon not include special char not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotDigitChar))), 10000, "Error icon not include digit char not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconLessThanEightChar))), 10000, "Error icon at least 8 characters not display");
                 let check = (protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotLowerChar)).isDisplayed &&
                     protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotUpperChar)).isDisplayed &&
                     protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotSpecialChar)).isDisplayed &&
@@ -86,7 +86,7 @@ class RegisterPage {
     elementOfEmailFieldErrorDisplay() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._emailFieldError))), 5000, "element take to long to response");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._emailFieldError))), 10000, "element take to long to response");
                 return yield protractor_1.element(protractor_1.by.xpath(this._emailFieldError)).isEnabled();
             }
             catch (error) {
@@ -97,9 +97,9 @@ class RegisterPage {
     passwordNotIncludeLowerCharErrorDisplay() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorNotLowerChar))), 5000, "contains at least one lower character message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotLowerChar))), 5000, "Error icon not include lower char not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorNotLowerChar))), 10000, "contains at least one lower character message not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorMessageInvalidPas))), 10000, "invalid password message not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotLowerChar))), 10000, "Error icon not include lower char not display");
                 return yield protractor_1.element(protractor_1.by.xpath(this._matErrorNotLowerChar)).getText();
             }
             catch (error) {
@@ -110,9 +110,9 @@ class RegisterPage {
     passwordNotIncludeUpperCharErrorDisplay() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorNotUpperChar))), 5000, "contains at least one upper character message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotUpperChar))), 5000, "Error icon not include upper char not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorNotUpperChar))), 10000, "contains at least one upper character message not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorMessageInvalidPas))), 10000, "invalid password message not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotUpperChar))), 10000, "Error icon not include upper char not display");
                 return yield protractor_1.element(protractor_1.by.xpath(this._matErrorNotUpperChar)).getText();
             }
             catch (error) {
@@ -124,8 +124,8 @@ class RegisterPage {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorNotSpecialChar))), 10000, "contains at least one special character message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotSpecialChar))), 5000, "Error icon not include special char not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorMessageInvalidPas))), 10000, "invalid password message not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotSpecialChar))), 10000, "Error icon not include special char not display");
                 return yield protractor_1.element(protractor_1.by.xpath(this._matErrorNotSpecialChar)).getText();
             }
             catch (error) {
@@ -136,9 +136,9 @@ class RegisterPage {
     passwordNotIncludeDigitCharErrorDisplay() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorNotDigitChar))), 5000, "contains at least one digit character message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotDigitChar))), 5000, "Error icon not include digit char not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorNotDigitChar))), 10000, "contains at least one digit character message not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorMessageInvalidPas))), 10000, "invalid password message not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconNotDigitChar))), 10000, "Error icon not include digit char not display");
                 return yield protractor_1.element(protractor_1.by.xpath(this._matErrorNotDigitChar)).getText();
             }
             catch (error) {
@@ -149,8 +149,8 @@ class RegisterPage {
     passwordLessThanEightCharErrorDisplay() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorLessThanEightChar))), 5000, "contains at least 8 characters message not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconLessThanEightChar))), 5000, "Error icon at least 8 characters not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorLessThanEightChar))), 10000, "contains at least 8 characters message not display");
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._matErrorIconLessThanEightChar))), 10000, "Error icon at least 8 characters not display");
                 return yield protractor_1.element(protractor_1.by.xpath(this._matErrorLessThanEightChar)).getText();
             }
             catch (error) {

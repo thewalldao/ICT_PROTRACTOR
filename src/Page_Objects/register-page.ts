@@ -56,11 +56,11 @@ export class RegisterPage {
 
     public async elementOfPasswordFieldErrorDisplay(): Promise<boolean> {
         try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotLowerChar))), 5000, "Error icon not include lower char not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotUpperChar))), 5000, "Error icon not include upper char not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotSpecialChar))), 5000, "Error icon not include special char not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotDigitChar))), 5000, "Error icon not include digit char not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconLessThanEightChar))), 5000, "Error icon at least 8 characters not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotLowerChar))), 10000, "Error icon not include lower char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotUpperChar))), 10000, "Error icon not include upper char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotSpecialChar))), 10000, "Error icon not include special char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotDigitChar))), 10000, "Error icon not include digit char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconLessThanEightChar))), 10000, "Error icon at least 8 characters not display");
     
             let check =  (element(by.xpath(this._matErrorIconNotLowerChar)).isDisplayed &&
                 element(by.xpath(this._matErrorIconNotUpperChar)).isDisplayed &&
@@ -80,7 +80,7 @@ export class RegisterPage {
 
     public async elementOfEmailFieldErrorDisplay(): Promise<boolean> {
         try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._emailFieldError))), 5000, "element take to long to response")
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._emailFieldError))), 10000, "element take to long to response")
             return await element(by.xpath(this._emailFieldError)).isEnabled();
         }
         catch (error) {
@@ -90,9 +90,9 @@ export class RegisterPage {
 
     public async passwordNotIncludeLowerCharErrorDisplay(): Promise<string> {
         try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotLowerChar))), 5000, "contains at least one lower character message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotLowerChar))), 5000, "Error icon not include lower char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotLowerChar))), 10000, "contains at least one lower character message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 10000, "invalid password message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotLowerChar))), 10000, "Error icon not include lower char not display");
             return await element(by.xpath(this._matErrorNotLowerChar)).getText();
         }
         catch (error) {
@@ -103,9 +103,9 @@ export class RegisterPage {
 
     public async passwordNotIncludeUpperCharErrorDisplay(): Promise<string> {
         try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotUpperChar))), 5000, "contains at least one upper character message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotUpperChar))), 5000, "Error icon not include upper char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotUpperChar))), 10000, "contains at least one upper character message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 10000, "invalid password message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotUpperChar))), 10000, "Error icon not include upper char not display");
             return await element(by.xpath(this._matErrorNotUpperChar)).getText();
         }
         catch (error) {
@@ -116,8 +116,8 @@ export class RegisterPage {
     public async passwordNotIncludeSpecialCharErrorDisplay(): Promise<string> {
         try {
             await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotSpecialChar))), 10000, "contains at least one special character message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotSpecialChar))), 5000, "Error icon not include special char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 10000, "invalid password message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotSpecialChar))), 10000, "Error icon not include special char not display");
             return await element(by.xpath(this._matErrorNotSpecialChar)).getText();
         }
         catch (error) {
@@ -127,9 +127,9 @@ export class RegisterPage {
 
     public async passwordNotIncludeDigitCharErrorDisplay(): Promise<string> {
         try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotDigitChar))), 5000, "contains at least one digit character message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 5000, "invalid password message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotDigitChar))), 5000, "Error icon not include digit char not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorNotDigitChar))), 10000, "contains at least one digit character message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorMessageInvalidPas))), 10000, "invalid password message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconNotDigitChar))), 10000, "Error icon not include digit char not display");
             return await element(by.xpath(this._matErrorNotDigitChar)).getText();
         }
         catch (error) {
@@ -139,8 +139,8 @@ export class RegisterPage {
 
     public async passwordLessThanEightCharErrorDisplay(): Promise<string> {
         try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorLessThanEightChar))), 5000, "contains at least 8 characters message not display");
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconLessThanEightChar))), 5000, "Error icon at least 8 characters not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorLessThanEightChar))), 10000, "contains at least 8 characters message not display");
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._matErrorIconLessThanEightChar))), 10000, "Error icon at least 8 characters not display");
             return await element(by.xpath(this._matErrorLessThanEightChar)).getText();
         }
         catch (error) {

@@ -21,7 +21,7 @@ describe('Register Test', function () {
         yield protractor_1.browser.manage().window().maximize();
         protractor_1.browser.manage().timeouts().implicitlyWait(5000);
     }));
-    it('Verify that user cannot register account with special character in username', () => __awaiter(this, void 0, void 0, function* () {
+    it(general_1.General.printBox('Verify that user cannot register account with special character in username'), () => __awaiter(this, void 0, void 0, function* () {
         let username = general_1.General.randomSpecialString(1) + general_1.General.makeUserName(7);
         let password = general_1.General.makeRandomChar(true, true, true, false) + general_1.General.randomNumberCharString(5);
         let email = general_1.General.randomEmail(10);

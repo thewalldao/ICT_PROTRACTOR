@@ -26,6 +26,7 @@ export class LoginPage {
     }
 
     public async loginSuccesful(user: User): Promise<ManageTestPage> {
+        General.printDescribe("Login")
         await element(by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
         await element(by.xpath(this._passwordField)).sendKeys(user.getPassWord());
         await element(by.xpath(this._loginButton)).click();
