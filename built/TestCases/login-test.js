@@ -9,18 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_1 = require("../Page_Objects/user");
+const User_1 = require("../Page_Objects/User");
 const protractor_1 = require("protractor");
+const Constant_1 = require("Utilities/Constant");
 const login_page_1 = require("../Page_Objects/login-page");
-const Constant_1 = require("../Utilities/Constant");
 describe('Login Test', function () {
-    let user = new user_1.User(Constant_1.Login.ADMIN, Constant_1.Login.ADMINPASS);
-    let longinPage = new login_page_1.LoginPage();
+    let user = new User_1.User(Constant_1.Login.ADMIN, Constant_1.Login.ADMINPASS);
+    let loginPage = new login_page_1.LoginPage();
     beforeEach(() => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get('http://192.168.171.141/');
     }));
     it('TC1 User Login successfull', () => __awaiter(this, void 0, void 0, function* () {
-        let managePage = yield longinPage.loginSuccesful(user);
+        let managePage = yield loginPage.loginSuccesful(user);
         yield managePage.hiUser(user);
     }));
 });

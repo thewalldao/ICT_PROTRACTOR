@@ -63,9 +63,7 @@ class Dashboard {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 yield protractor_1.browser.wait(this.PE.visibilityOf(this.elememtOfHelloUser()), 10000, "element take to long to response");
-                let aa = yield this.elememtOfHelloUser().getText();
-                console.log(aa);
-                return aa;
+                return yield this.elememtOfHelloUser().getText();
             }
             catch (error) {
                 console.log(error);

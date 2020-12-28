@@ -36,6 +36,8 @@ export class RegisterPage{
         await element(by.xpath(this._passwordField)).sendKeys(user.getPassWord());
         await element(by.xpath(this._comfirmPasswordField)).sendKeys(user.getPassWordComfirm());
 
+        await element(by.xpath(this._submitButton)).click();
+
         return this;
     }
  

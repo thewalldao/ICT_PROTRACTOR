@@ -11,9 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 class User {
-    constructor(username, password) {
+    constructor(username, password, comfirmpas, email) {
         this.userName = username;
+        this.email = email;
         this.passWord = password;
+        this.comfirmPassword = comfirmpas;
     }
     getUsername() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -21,6 +23,16 @@ class User {
         });
     }
     getPassWord() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.passWord;
+        });
+    }
+    getEmail() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.passWord;
+        });
+    }
+    getPassWordComfirm() {
         return __awaiter(this, void 0, void 0, function* () {
             return this.passWord;
         });

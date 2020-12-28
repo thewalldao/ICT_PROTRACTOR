@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
 exports.config = {
     specs: [
-        `E:/TUANDAO/PROJECT/SimpleProtractorTest/built/TestCases/login-test.js`
+        'E:/TUANDAO/PROJECT/SimpleProtractorTest/built/TestCases/login-test.js'
     ],
     framework: 'jasmine',
     capabilities: {
