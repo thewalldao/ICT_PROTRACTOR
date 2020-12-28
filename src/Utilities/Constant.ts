@@ -4,5 +4,5 @@ export enum Login{
 }
 
 export enum Register{
-    
+    EMAIL = "thewalldao@gmail.com"
 }

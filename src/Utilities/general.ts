@@ -73,7 +73,7 @@ export class General {
     }
 
     static randomEmail(length: number): string {
-        let email = this.makeUserName(length) + "gmail.com";
+        let email = this.makeUserName(length) + "@gmail.com";
         return email
     }
 

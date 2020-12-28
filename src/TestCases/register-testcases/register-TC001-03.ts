@@ -12,7 +12,7 @@ describe('Register Test', function () {
         await browser.manage().window().maximize();
         browser.manage().timeouts().implicitlyWait(5000);
     });
-    it(General.printBox('Verify that user cannot register account without any upper character in password'), async () => {
+    it(General.printBox('TC001-03 - Verify that user cannot register account without any upper character in password'), async () => {
         let username = General.makeUserName(7);
         let password = General.makeRandomChar(false,true,true,true) + General.randomNumberCharString(5);
         let email = General.randomEmail(10);

@@ -63,7 +63,7 @@ class General {
         return result;
     }
     static randomEmail(length) {
-        let email = this.makeUserName(length) + "gmail.com";
+        let email = this.makeUserName(length) + "@gmail.com";
         return email;
     }
     static printBox(str) {

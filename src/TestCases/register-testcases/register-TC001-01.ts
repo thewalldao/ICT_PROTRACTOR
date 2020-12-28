@@ -13,7 +13,7 @@ describe('Register Test', function () {
         await browser.manage().window().maximize();
         browser.manage().timeouts().implicitlyWait(5000);
     });
-    it(General.printBox('Verify that user cannot register account with special character in username'), async () => {
+    it(General.printBox('TC001-01 - Verify that user cannot register account with special character in username'), async () => {
         let username = General.randomSpecialString(1) + General.makeUserName(7);
         let password = General.makeRandomChar(true,true,true,false) + General.randomNumberCharString(5);
         let email = General.randomEmail(10);

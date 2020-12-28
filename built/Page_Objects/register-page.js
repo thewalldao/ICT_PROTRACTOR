@@ -169,6 +169,17 @@ class RegisterPage {
             return this;
         });
     }
+    errorToastPopupDisplay() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._popupToastErrorMessage))), 10000, "element take to long to response");
+                return yield protractor_1.element(protractor_1.by.xpath(this._popupToastErrorMessage)).getText();
+            }
+            catch (error) {
+                console.log(error);
+            }
+        });
+    }
 }
 exports.RegisterPage = RegisterPage;
 //# sourceMappingURL=register-page.js.map

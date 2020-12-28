@@ -161,4 +161,14 @@ export class RegisterPage {
 
         return this;
     }
+
+    public async errorToastPopupDisplay():Promise<string>{
+        try {
+            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._popupToastErrorMessage))), 10000, "element take to long to response")
+            return await element(by.xpath(this._popupToastErrorMessage)).getText();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
 }

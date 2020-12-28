@@ -8,5 +8,6 @@ var Login;
 })(Login = exports.Login || (exports.Login = {}));
 var Register;
 (function (Register) {
+    Register["EMAIL"] = "thewalldao@gmail.com";
 })(Register = exports.Register || (exports.Register = {}));
 //# sourceMappingURL=Constant.js.map

@@ -21,7 +21,7 @@ describe('Register Test', function () {
         yield protractor_1.browser.manage().window().maximize();
         protractor_1.browser.manage().timeouts().implicitlyWait(5000);
     }));
-    it(general_1.General.printBox('Verify that user cannot register account with blank username'), () => __awaiter(this, void 0, void 0, function* () {
+    it(general_1.General.printBox('TC001-07 - Verify that user cannot register account with blank username'), () => __awaiter(this, void 0, void 0, function* () {
         let username = '';
         let password = general_1.General.makeRandomChar(true, true, true, true) + general_1.General.randomLowerCharString(5);
         let email = general_1.General.randomEmail(10);

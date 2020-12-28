@@ -12,7 +12,7 @@ describe('Register Test', function () {
         await browser.manage().window().maximize();
         browser.manage().timeouts().implicitlyWait(5000);
     });
-    it(General.printBox('Verify that user cannot register account length less than 8 characters'), async () => {
+    it(General.printBox('TC001-05 - Verify that user cannot register account length less than 8 characters'), async () => {
         let username = General.makeUserName(7);
         let password = General.makeRandomChar(true,true,true,true) + General.randomLowerCharString(3);
         let email = General.randomEmail(10);

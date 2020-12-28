@@ -12,7 +12,7 @@ describe('Register Test', function () {
         await browser.manage().window().maximize();
         browser.manage().timeouts().implicitlyWait(5000);
     });
-    it(General.printBox('Verify that user cannot register account with blank username'), async () => {
+    it(General.printBox('TC001-07 - Verify that user cannot register account with blank username'), async () => {
         let username = '';
         let password = General.makeRandomChar(true,true,true,true) + General.randomLowerCharString(5);
         let email = General.randomEmail(10);

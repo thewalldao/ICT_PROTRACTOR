@@ -13,7 +13,7 @@ describe('Register Test', function () {
         await browser.manage().window().maximize();
         browser.manage().timeouts().implicitlyWait(5000);
     });
-    it(General.printBox('Verify that user cannot register account without any lower character in password'), async () => {
+    it(General.printBox('TC001-02 - Verify that user cannot register account without any lower character in password'), async () => {
         let username = General.makeUserName(7);
         let password = General.makeRandomChar(true,false,true,true) + General.randomNumberCharString(5);
         let email = General.randomEmail(10);
