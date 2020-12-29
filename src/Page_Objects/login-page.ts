@@ -15,6 +15,7 @@ export class LoginPage {
     private _passwordField: string = "//input[@id='Password'][@class='form-control']";
     private _loginButton: string = "//button[@id='logIn'][@class='btn btn-primary btn-block']";
     private _register: string = "//div[@class='row']/button[@type='button']";
+    private _errorFeedback: string = "//div[@class='feedback']//li"
     private PE = protractor.ExpectedConditions;
 
     protected elementOfRegiter(){
@@ -44,9 +45,20 @@ export class LoginPage {
         }
         catch(error){
             console.log(error);
-        }
-       
-        
+        } 
+    }
+    public async loginError(user:User): Promise<LoginPage>{
+        General.printDescribe("Login")
+        await element(by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
+        await element(by.xpath(this._passwordField)).sendKeys(user.getPassWord());
+        await element(by.xpath(this._loginButton)).click();
+
+        return this;
+    }
+
+    public async getErrorFeedBack():Promise<string>{
+        await browser.wait(this.PE.visibilityOf(element(by.xpath("//div[@class='feedback']//li"))), 100000, "element take to long to response");
+        return element(by.xpath("//div[@class='feedback']//li")).getText()
     }
 
 }

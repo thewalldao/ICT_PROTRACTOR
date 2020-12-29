@@ -20,6 +20,7 @@ class LoginPage {
         this._passwordField = "//input[@id='Password'][@class='form-control']";
         this._loginButton = "//button[@id='logIn'][@class='btn btn-primary btn-block']";
         this._register = "//div[@class='row']/button[@type='button']";
+        this._errorFeedback = "//div[@class='feedback']//li";
         this.PE = protractor_1.protractor.ExpectedConditions;
     }
     elementOfRegiter() {
@@ -48,6 +49,21 @@ class LoginPage {
             catch (error) {
                 console.log(error);
             }
+        });
+    }
+    loginError(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            general_1.General.printDescribe("Login");
+            yield protractor_1.element(protractor_1.by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
+            yield protractor_1.element(protractor_1.by.xpath(this._passwordField)).sendKeys(user.getPassWord());
+            yield protractor_1.element(protractor_1.by.xpath(this._loginButton)).click();
+            return this;
+        });
+    }
+    getErrorFeedBack() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath("//div[@class='feedback']//li"))), 100000, "element take to long to response");
+            return protractor_1.element(protractor_1.by.xpath("//div[@class='feedback']//li")).getText();
         });
     }
 }

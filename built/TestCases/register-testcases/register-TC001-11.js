@@ -26,6 +26,12 @@ describe('Register Test', function () {
         let username = general_1.General.makeUserName(7);
         let password = general_1.General.makeRandomChar(true, true, true, true) + general_1.General.randomLowerCharString(5);
         let email = Constant_1.Register.EMAIL;
+        let fs = require('fs');
+        fs.appendFile("../../data-objects/user.txt", `AUTO - {${username}} - {${password}}\n`, function (err) {
+            if (err)
+                throw err;
+            console.log('Saved!');
+        });
         let user = new User_1.User(username, password, password, email);
         let registerPage = yield loginPage.gotoRegisterPage();
         yield registerPage.regiterAccountError(user);

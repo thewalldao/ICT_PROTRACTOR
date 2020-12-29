@@ -112,7 +112,7 @@ export class General {
         }
 
 
-        strTime = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} - ${hoursTime}:${minuteTime}:${secondTime}`
+        strTime = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()} - ${hoursTime}:${minuteTime}:${secondTime}`
    
         console.log(`${strTime} - ${str}`)
     }

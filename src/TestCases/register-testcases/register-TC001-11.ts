@@ -5,6 +5,7 @@ import { User } from "../../Page_Objects/User";
 import { browser } from "protractor";
 import { General } from "../../Utilities/general";
 import { Login, Register } from "../../Utilities/Constant";
+import { appendFile } from "fs";
 
 describe('Register Test', function () {
     let loginPage = new LoginPage();
@@ -18,6 +19,11 @@ describe('Register Test', function () {
         let username = General.makeUserName(7);
         let password = General.makeRandomChar(true,true,true,true) + General.randomLowerCharString(5);
         let email = Register.EMAIL;
+        appendFile("../../data-objects/user.txt",`AUTO - ${username} - ${password}\n`,function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+          })
+
         let user: User = new User(username,password,password,email);
         let registerPage:RegisterPage = await loginPage.gotoRegisterPage();
         await registerPage.regiterAccountError(user);

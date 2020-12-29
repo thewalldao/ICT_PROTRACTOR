@@ -42,20 +42,20 @@
             "@conf/*": [
                 "src/conf/*"
             ],
-            // "@data-objects/*": [
-            //     "data-objects/*"
-            // ],
+            "@data-objects/*": [
+                "data-objects/*"
+            ],
             "@page-objects/*": [
                 "src/Page_Objects/*"
             ],
-            // "@test-data/*": [
-            //     "test-data/*"
-            // ],
+            "@test-data/*": [
+                "test-data/*"
+            ],
             "@testcases/*": [
-                "src/TestCases/*"
+                "TestCases/*"
             ],
             "@utilities/*": [
-                "src/Utilities/*"
+                "Utilities/*"
             ],
             // "@test-helpers/*": [
             //     "test-helpers/*"
