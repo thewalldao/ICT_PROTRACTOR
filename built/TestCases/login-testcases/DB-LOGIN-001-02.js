@@ -9,11 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const login_page_1 = require("../../Page_Objects/login-page");
-const User_1 = require("../../Page_Objects/User");
+require("module-alias/register");
 const protractor_1 = require("protractor");
-const general_1 = require("../../Utilities/general");
-const Constant_1 = require("../../utilities/Constant");
+const general_1 = require("@Utilities/general");
+const Constant_1 = require("@Utilities/Constant");
+const login_page_1 = require("@page-objects/login-page");
+const User_1 = require("@page-objects/User");
 describe('Login Test', function () {
     let loginPage = new login_page_1.LoginPage();
     beforeEach(() => __awaiter(this, void 0, void 0, function* () {

@@ -1,8 +1,9 @@
-import { LoginPage } from "../../Page_Objects/login-page";
-import { User } from "../../Page_Objects/User";
+import 'module-alias/register';
 import { browser } from "protractor";
-import { General } from "../../Utilities/general";
-import { Login } from "../../utilities/Constant";
+import { General } from '@Utilities/general';
+import { Login } from '@Utilities/Constant';
+import { LoginPage } from '@page-objects/login-page';
+import { User } from '@page-objects/User';
 
 
 describe('Login Test', function () {

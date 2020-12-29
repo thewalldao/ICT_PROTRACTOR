@@ -14,6 +14,7 @@ const User_1 = require("../../Page_Objects/User");
 const protractor_1 = require("protractor");
 const general_1 = require("../../Utilities/general");
 const Constant_1 = require("../../Utilities/Constant");
+const fs_1 = require("fs");
 describe('Register Test', function () {
     let loginPage = new login_page_1.LoginPage();
     beforeEach(() => __awaiter(this, void 0, void 0, function* () {
@@ -26,8 +27,7 @@ describe('Register Test', function () {
         let username = general_1.General.makeUserName(7);
         let password = general_1.General.makeRandomChar(true, true, true, true) + general_1.General.randomLowerCharString(5);
         let email = Constant_1.Register.EMAIL;
-        let fs = require('fs');
-        fs.appendFile("../../data-objects/user.txt", `AUTO - {${username}} - {${password}}\n`, function (err) {
+        fs_1.appendFile("../../data-objects/user.txt", `AUTO - ${username} - ${password}\n`, function (err) {
             if (err)
                 throw err;
             console.log('Saved!');

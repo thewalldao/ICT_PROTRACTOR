@@ -40,13 +40,13 @@
             //     "apis/*"
             // ],
             "@conf/*": [
-                "src/conf/*"
+                "conf/*"
             ],
             "@data-objects/*": [
                 "data-objects/*"
             ],
             "@page-objects/*": [
-                "src/Page_Objects/*"
+                "Page_Objects/*"
             ],
             "@test-data/*": [
                 "test-data/*"
@@ -54,7 +54,7 @@
             "@testcases/*": [
                 "TestCases/*"
             ],
-            "@utilities/*": [
+            "@Utilities/*": [
                 "Utilities/*"
             ],
             // "@test-helpers/*": [

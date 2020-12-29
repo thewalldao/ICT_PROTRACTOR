@@ -23,7 +23,7 @@
     "js-logger": "^1.6.0",
     "json2typescript": "^1.1.1",
     "lodash": "^4.17.11",
-    "module-alias": "^2.2.0",
+    "module-alias": "^2.2.2",
     "moment": "^2.24.0",
     "nodemailer": "^4.7.0",
     "npm": "^5.10.0",
@@ -42,5 +42,13 @@
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
     "@types/node": "^10.14.13"
+  },
+  "_moduleAliases": {
+    "@conf": "built/conf",
+    "@data-objects": "built/data-objects",
+    "@page-objects": "built/Page_Objects",
+    "@test-data": "built/test-data",
+    "@testcases": "built/TestCases",
+    "@Utilities": "built/Utilities"
   }
 }
