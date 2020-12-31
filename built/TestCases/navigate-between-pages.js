@@ -24,8 +24,6 @@ describe('Navigate Between Pages', function () {
         protractor_1.browser.manage().timeouts().implicitlyWait(5000);
     }));
     it('TC01 - Navigate Between Pages', () => __awaiter(this, void 0, void 0, function* () {
-        managePage = yield loginPage.loginSuccesful(user);
-        expect(yield managePage.hiUser(user)).toEqual(`Hi, ${Constant_1.Login.ADMIN}`, "Message is not like expect");
     }));
 });
 //# sourceMappingURL=navigate-between-pages.js.map

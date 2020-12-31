@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginPage = void 0;
 const protractor_1 = require("protractor");
 const general_1 = require("../Utilities/general");
-const manage_test_page_1 = require("./manage-test-page");
+const dashboard_1 = require("./dashboard");
 const register_page_1 = require("./register-page");
 class LoginPage {
     constructor() {
@@ -35,7 +35,7 @@ class LoginPage {
             yield protractor_1.element(protractor_1.by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
             yield protractor_1.element(protractor_1.by.xpath(this._passwordField)).sendKeys(user.getPassWord());
             yield protractor_1.element(protractor_1.by.xpath(this._loginButton)).click();
-            return yield new manage_test_page_1.ManageTestPage();
+            return yield new dashboard_1.Dashboard();
         });
     }
     gotoRegisterPage() {

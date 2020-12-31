@@ -13,14 +13,16 @@ const User_1 = require("../../Page_Objects/User");
 const protractor_1 = require("protractor");
 const Constant_1 = require("Utilities/Constant");
 const login_page_1 = require("../../Page_Objects/login-page");
+const manage_test_page_1 = require("../../Page_Objects/manage-test-page");
 describe('Login Test', function () {
-    let user = new User_1.User(Constant_1.Login.ADMIN, Constant_1.Login.ADMINPASS);
+    let user = new User_1.User(Constant_1.Login.USER, Constant_1.Login.USERPASS);
     let loginPage = new login_page_1.LoginPage();
     beforeEach(() => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get('http://192.168.171.141/');
     }));
     it('TC1 User Login successfull', () => __awaiter(this, void 0, void 0, function* () {
-        let managePage = yield loginPage.loginSuccesful(user);
+        yield loginPage.loginSuccesful(user);
+        let managePage = new manage_test_page_1.ManageTestPage();
         yield managePage.hiUser(user);
     }));
 });

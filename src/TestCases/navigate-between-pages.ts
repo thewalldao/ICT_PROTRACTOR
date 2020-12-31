@@ -16,8 +16,8 @@ describe('Navigate Between Pages', function() {
         browser.manage().timeouts().implicitlyWait(5000);
       });
     it('TC01 - Navigate Between Pages',async () => {
-        managePage = await loginPage.loginSuccesful(user);        
-        expect(await managePage.hiUser(user)).toEqual(`Hi, ${Login.ADMIN}`, "Message is not like expect")
+        // managePage = await loginPage.loginSuccesful(user);        
+        // expect(await managePage.hiUser(user)).toEqual(`Hi, ${Login.ADMIN}`, "Message is not like expect")
         // expect(await managePage.titleIsDisplay()).toBe(true,"Manage Test Page is not Display");
         
         // let testResults  = await managePage.gotoTestResultPage();

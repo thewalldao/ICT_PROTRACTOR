@@ -1,5 +1,6 @@
 import { browser, by, element, ElementFinder, protractor } from "protractor";
 import { General } from "../Utilities/general";
+import { Dashboard } from "./dashboard";
 import { ManageTestPage } from "./manage-test-page";
 import { RegisterPage } from "./register-page";
 import { User } from "./user";
@@ -26,13 +27,13 @@ export class LoginPage {
         return element(by.xpath(this._loginButton));
     }
 
-    public async loginSuccesful(user: User): Promise<ManageTestPage> {
+    public async loginSuccesful(user: User): Promise<Dashboard> {
         General.printDescribe("Login")
         await element(by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
         await element(by.xpath(this._passwordField)).sendKeys(user.getPassWord());
         await element(by.xpath(this._loginButton)).click();
 
-        return await new ManageTestPage();
+        return await new Dashboard();
     }
 
     public async gotoRegisterPage(): Promise<RegisterPage> {

@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Dashboard = void 0;
+const general_1 = require("@Utilities/general");
 const protractor_1 = require("protractor");
 class Dashboard {
     constructor() {
@@ -18,14 +19,17 @@ class Dashboard {
         this._reportingPage = "//li[@id='reporting']";
         this._uiPerformanceTestPage = "//li[@id='uiPerformanceTest']";
         this._administratorPage = "//li[@id='administration']";
-        this._userProfile = "//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span";
         this._title = "//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]";
         this._loadingpage = "//div[@class='loader']";
         this._helloUser = "//li[@class='nav-item dropdown nav-item-highlight'] //a[@id='navbardrop']";
+        this._profileDropdown = "//li[@class='nav-item dropdown nav-item-highlight show'] //div[@class='dropdown-menu dropdown-menu-right show']";
         this.PE = protractor_1.protractor.ExpectedConditions;
     }
     elementOfTitle() {
         return protractor_1.element(protractor_1.by.xpath("//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]"));
+    }
+    elementOfDropdown() {
+        return protractor_1.element(this._profileDropdown);
     }
     loadingElement() {
         return protractor_1.element(protractor_1.by.xpath(this._loadingpage));
@@ -35,22 +39,88 @@ class Dashboard {
     }
     gotoManageTestPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield protractor_1.element(protractor_1.by.xpath(this._manageTestsPage)).click();
+            general_1.General.printDescribe("go to manage test page");
+            try {
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._manageTestsPage))), 10000, "manage test tab is not display");
+                yield protractor_1.element(protractor_1.by.xpath(this._manageTestsPage)).click();
+                return this;
+            }
+            catch (error) {
+                console.log(error);
+            }
         });
     }
     gotoTestResultPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
+            general_1.General.printDescribe("go to test result page");
+            try {
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._testResultPage))), 10000, "test result tab is not display");
+                yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
+                return this;
+            }
+            catch (error) {
+                console.log(error);
+            }
         });
     }
     gotoReportingPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield protractor_1.element(protractor_1.by.xpath(this._reportingPage)).click();
+            general_1.General.printDescribe("go to reporting page");
+            try {
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._reportingPage))), 10000, "reporting tab is not display");
+                yield protractor_1.element(protractor_1.by.xpath(this._reportingPage)).click();
+                return this;
+            }
+            catch (error) {
+                console.log(error);
+            }
         });
     }
     gotoUiPerformancePage() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield protractor_1.element(protractor_1.by.xpath(this._uiPerformanceTestPage)).click();
+            general_1.General.printDescribe("go to Ui performance page");
+            try {
+                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._uiPerformanceTestPage))), 10000, "performance page tab is not display");
+                yield protractor_1.element(protractor_1.by.xpath(this._uiPerformanceTestPage)).click();
+                return this;
+            }
+            catch (error) {
+                console.log(error);
+            }
+        });
+    }
+    elementOfUserOption(str) {
+        return protractor_1.element(protractor_1.by.xpath(`//li[@class='nav-item dropdown nav-item-highlight show'] //div[@class='dropdown-menu dropdown-menu-right show']//a[contains(.,'${str}')]`));
+    }
+    selectUserOption(str) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.elementOfDropdown().isDisplayed()) {
+                yield this.elememtOfHelloUser().click();
+                yield this.elementOfUserOption(str).click();
+            }
+            else {
+                yield this.elementOfUserOption(str).click();
+            }
+        });
+    }
+    elementIsClickable(ele) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield protractor_1.browser.wait(this.PE.elementToBeClickable(ele), 20000, "This element can not clickable");
+            }
+            catch (error) {
+                console.log(error);
+            }
+        });
+    }
+    elementIsHighLight(ele) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return this.elementIsClickable(ele);
+            }
+            catch (error) {
+                console.log(error);
+            }
         });
     }
     getTitle() {
