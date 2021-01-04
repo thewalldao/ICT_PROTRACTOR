@@ -1,5 +1,5 @@
 import { browser, by, element, ElementFinder, protractor } from "protractor";
-import { General } from "../Utilities/general";
+import { General } from "../Utilities/General";
 import { Dashboard } from "./dashboard";
 import { ManageTestPage } from "./manage-test-page";
 import { RegisterPage } from "./register-page";

@@ -24,18 +24,6 @@ class ManageTestPage extends dashboard_1.Dashboard {
         this.elementSyncTestText = protractor_1.element(protractor_1.by.xpath("//button[@id='btnSyncTestsModal']//span"));
         this.elementEditTabText = protractor_1.element(protractor_1.by.xpath("//button[@id='btnEditTab']//span"));
     }
-    syncTestButtonIsHighLight() {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(this.elementGuideLineNextButton), 10000, "Guide Line Next Button is not display");
-                yield protractor_1.browser.wait(this.PE.visibilityOf(this.elementGuideLineSkipButton), 10000, "Guide Line Skip Button is not display");
-                return this.elementIsHighLight(this.elementTestGroups);
-            }
-            catch (error) {
-                console.log(error);
-            }
-        });
-    }
     clickHelpButton() {
         return __awaiter(this, void 0, void 0, function* () {
             general_1.General.printDescribe("click help button");

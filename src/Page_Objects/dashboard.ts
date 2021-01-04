@@ -1,4 +1,4 @@
-import { General } from "@Utilities/general";
+import { General } from "@Utilities/General";
 import { browser, by, element, ElementFinder, protractor, until } from "protractor";
 import { User } from "./User";
 
@@ -35,48 +35,37 @@ export class Dashboard {
 
     public async gotoManageTestPage(): Promise<Dashboard> {
         General.printDescribe("go to manage test page");
-        try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._manageTestsPage))), 10000,"manage test tab is not display")
-            await element(by.xpath(this._manageTestsPage)).click();
+            // await browser.wait(General.PE.visibilityOf(element(by.xpath(this._manageTestsPage))), 10000, "manage test tab is not display")
+        General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display")
+            await element(by.xpath(this._testResultPage)).click();
             return this
-        } catch (error) {
-            console.log(error);
-        }
-
     }
 
     public async gotoTestResultPage(): Promise<Dashboard> {
         General.printDescribe("go to test result page");
-        try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._testResultPage))), 10000,"test result tab is not display")
-            await element(by.xpath(this._testResultPage)).click();
-            return this
-        } catch (error) {
-            console.log(error);
-        }
+        General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display")
+        // await browser.wait(this.PE.visibilityOf(element(by.xpath(this._testResultPage))), 10000,"test result tab is not display")
+        await element(by.xpath(this._testResultPage)).click();
+        return this
     }
 
     public async gotoReportingPage(): Promise<Dashboard> {
         General.printDescribe("go to reporting page");
-        try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._reportingPage))), 10000,"reporting tab is not display")
-            await element(by.xpath(this._reportingPage)).click();
-            return this
-        } catch (error) {
-            console.log(error);
-        }
+        General.isElementVisibleOf(this._reportingPage, 10000, "reporting tab is not display")
+        // await browser.wait(this.PE.visibilityOf(element(by.xpath(this._reportingPage))), 10000,"reporting tab is not display")
+        await element(by.xpath(this._reportingPage)).click();
+        return this
     }
+
 
     public async gotoUiPerformancePage(): Promise<Dashboard> {
         General.printDescribe("go to Ui performance page");
-        try {
-            await browser.wait(this.PE.visibilityOf(element(by.xpath(this._uiPerformanceTestPage))), 10000,"performance page tab is not display")
-            await element(by.xpath(this._uiPerformanceTestPage)).click();
-            return this
-        } catch (error) {
-            console.log(error);
-        }
+        General.isElementVisibleOf(this._uiPerformanceTestPage, 10000, "performance page tab is not display")
+        // await browser.wait(this.PE.visibilityOf(element(by.xpath(this._uiPerformanceTestPage))), 10000, "performance page tab is not display")
+        await element(by.xpath(this._uiPerformanceTestPage)).click();
+        return this
     }
+
 
     protected elementOfUserOption(str: string) {
         return element(by.xpath(`//li[@class='nav-item dropdown nav-item-highlight show'] //div[@class='dropdown-menu dropdown-menu-right show']//a[contains(.,'${str}')]`));
@@ -95,14 +84,6 @@ export class Dashboard {
     protected async elementIsClickable(ele: ElementFinder): Promise<boolean> {
         try {
             return await browser.wait(this.PE.elementToBeClickable(ele), 20000, "This element can not clickable");
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    protected async elementIsHighLight(ele: ElementFinder): Promise<boolean> {
-        try {
-            return this.elementIsClickable(ele);
         } catch (error) {
             console.log(error);
         }

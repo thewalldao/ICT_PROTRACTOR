@@ -1,6 +1,16 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.General = void 0;
+const protractor_1 = require("protractor");
 class General {
     static makeRandomChar(up, low, num, spe) {
         let result = '';
@@ -100,6 +110,55 @@ class General {
         strTime = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} - ${hoursTime}:${minuteTime}:${secondTime}`;
         console.log(`${strTime} - ${str}`);
     }
+    static isElementVisibleOf(ele, time, reportErr) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.printDescribe("check Element Visibleof");
+            try {
+                if ((typeof (ele) === "string")) {
+                    return yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(ele))), time, reportErr);
+                }
+                else {
+                    return yield protractor_1.browser.wait(this.PE.visibilityOf(ele), time, reportErr);
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        });
+    }
+    static isElementPrecenceOf(ele, time, reportErr) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.printDescribe("check Element PrecencOf");
+            try {
+                if ((typeof (ele) === "string")) {
+                    return yield protractor_1.browser.wait(this.PE.presenceOf(protractor_1.element(protractor_1.by.xpath(ele))), time, reportErr);
+                }
+                else {
+                    return yield protractor_1.browser.wait(this.PE.presenceOf(ele), time, reportErr);
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        });
+    }
+    static isElementClickAble(ele, time, reportErr) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.printDescribe("check Element PrecencOf");
+            try {
+                if ((typeof (ele) === "string")) {
+                    return yield protractor_1.browser.wait(this.PE.elementToBeClickable(protractor_1.element(protractor_1.by.xpath(ele))), time, reportErr);
+                }
+                else {
+                    return yield protractor_1.browser.wait(this.PE.elementToBeClickable(ele), time, reportErr);
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        });
+    }
 }
 exports.General = General;
+General.PE = protractor_1.protractor.ExpectedConditions;
 //# sourceMappingURL=general.js.map

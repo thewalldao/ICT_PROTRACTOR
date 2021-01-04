@@ -1,5 +1,5 @@
 import { browser, by, element, protractor } from "protractor";
-import { General } from "../Utilities/general";
+import { General } from "../Utilities/General";
 import { User } from "./User";
 
 export class RegisterPage {

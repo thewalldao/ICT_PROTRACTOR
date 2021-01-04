@@ -1,4 +1,4 @@
-import { General } from "@Utilities/general";
+import { General } from "@Utilities/General";
 import { browser, by, element, ElementFinder } from "protractor";
 import { protractor } from "protractor";
 import { Dashboard } from "./dashboard";
@@ -13,17 +13,7 @@ export class ManageTestPage extends Dashboard {
     public elementSyncTestText: ElementFinder = element(by.xpath("//button[@id='btnSyncTestsModal']//span"))
     public elementEditTabText: ElementFinder = element(by.xpath("//button[@id='btnEditTab']//span"))
 
-    public async syncTestButtonIsHighLight() {
-        try {
-            await browser.wait(this.PE.visibilityOf(this.elementGuideLineNextButton), 10000,"Guide Line Next Button is not display")
-            await browser.wait(this.PE.visibilityOf(this.elementGuideLineSkipButton), 10000,"Guide Line Skip Button is not display")
-            return this.elementIsHighLight(this.elementTestGroups);
-            
-
-        }catch(error){
-            console.log(error);
-        }
-    }
+ 
     public async clickHelpButton(): Promise<void> {
         General.printDescribe("click help button")
         try {

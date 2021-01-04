@@ -3,7 +3,7 @@ import { LoginPage } from "../../Page_Objects/login-page";
 import { RegisterPage } from "../../Page_Objects/register-page";
 import { User } from "../../Page_Objects/User";
 import { browser } from "protractor";
-import { General } from "../../Utilities/general";
+import { General } from "../../Utilities/General";
 import { Login, Register } from "../../Utilities/Constant";
 import { appendFile } from "fs";
 

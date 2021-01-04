@@ -1,4 +1,7 @@
+import { browser, by, element, ElementFinder, protractor } from "protractor";
+
 export class General {
+    public static PE = protractor.ExpectedConditions;
 
     static makeRandomChar(up: boolean, low: boolean, num: boolean, spe: boolean): string {
         let result = '';
@@ -13,7 +16,6 @@ export class General {
 
         if (up === true) {
             result += upperCharacters.charAt(Math.floor(Math.random() * upperCharacterLength));
-
         }
 
         if (low === true) {
@@ -89,32 +91,70 @@ export class General {
         let date: Date = new Date();
 
         let strTime: string;
-        let hoursTime:string;
-        let minuteTime:string;
-        let secondTime:string;
+        let hoursTime: string;
+        let minuteTime: string;
+        let secondTime: string;
 
         if (date.getHours() < 10) {
             hoursTime = `0${date.getHours()}`
-        }else if (date.getHours() >= 10){
+        } else if (date.getHours() >= 10) {
             hoursTime = `${date.getHours()}`
         }
 
         if (date.getMinutes() < 10) {
             minuteTime = `0${date.getMinutes()}`
-        }else if(date.getMinutes() >= 10) {
+        } else if (date.getMinutes() >= 10) {
             minuteTime = `${date.getMinutes()}`
         }
 
         if (date.getSeconds() < 10) {
             secondTime = `0${date.getSeconds()}`
-        }else if(date.getSeconds() >= 10) {
+        } else if (date.getSeconds() >= 10) {
             secondTime = `${date.getSeconds()}`
         }
 
 
-        strTime = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()} - ${hoursTime}:${minuteTime}:${secondTime}`
-   
+        strTime = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} - ${hoursTime}:${minuteTime}:${secondTime}`
+
         console.log(`${strTime} - ${str}`)
+    }
+    static async isElementVisibleOf(ele: ElementFinder | string, time: number, reportErr: string): Promise<boolean> {
+        this.printDescribe("check Element Visibleof")
+        try {
+            if ((typeof (ele) === "string")) {
+                return await browser.wait(this.PE.visibilityOf(element(by.xpath(ele))), time, reportErr);
+            } else {
+                return await browser.wait(this.PE.visibilityOf(ele), time, reportErr);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    static async isElementPrecenceOf(ele: ElementFinder | string, time: number, reportErr: string): Promise<boolean> {
+        this.printDescribe("check Element PrecencOf")
+        try {
+            if ((typeof (ele) === "string")) {
+                return await browser.wait(this.PE.presenceOf(element(by.xpath(ele))), time, reportErr);
+            } else {
+                return await browser.wait(this.PE.presenceOf(ele), time, reportErr);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    
+    static async isElementClickAble(ele: ElementFinder | string, time: number, reportErr: string): Promise<boolean> {
+        this.printDescribe("check Element PrecencOf")
+        try {
+            if ((typeof (ele) === "string")) {
+                return await browser.wait(this.PE.elementToBeClickable(element(by.xpath(ele))), time, reportErr);
+            } else {
+                return await browser.wait(this.PE.elementToBeClickable(ele), time, reportErr);
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
 

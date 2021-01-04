@@ -40,53 +40,33 @@ class Dashboard {
     gotoManageTestPage() {
         return __awaiter(this, void 0, void 0, function* () {
             general_1.General.printDescribe("go to manage test page");
-            try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._manageTestsPage))), 10000, "manage test tab is not display");
-                yield protractor_1.element(protractor_1.by.xpath(this._manageTestsPage)).click();
-                return this;
-            }
-            catch (error) {
-                console.log(error);
-            }
+            general_1.General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display");
+            yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
+            return this;
         });
     }
     gotoTestResultPage() {
         return __awaiter(this, void 0, void 0, function* () {
             general_1.General.printDescribe("go to test result page");
-            try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._testResultPage))), 10000, "test result tab is not display");
-                yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
-                return this;
-            }
-            catch (error) {
-                console.log(error);
-            }
+            general_1.General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display");
+            yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
+            return this;
         });
     }
     gotoReportingPage() {
         return __awaiter(this, void 0, void 0, function* () {
             general_1.General.printDescribe("go to reporting page");
-            try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._reportingPage))), 10000, "reporting tab is not display");
-                yield protractor_1.element(protractor_1.by.xpath(this._reportingPage)).click();
-                return this;
-            }
-            catch (error) {
-                console.log(error);
-            }
+            general_1.General.isElementVisibleOf(this._reportingPage, 10000, "reporting tab is not display");
+            yield protractor_1.element(protractor_1.by.xpath(this._reportingPage)).click();
+            return this;
         });
     }
     gotoUiPerformancePage() {
         return __awaiter(this, void 0, void 0, function* () {
             general_1.General.printDescribe("go to Ui performance page");
-            try {
-                yield protractor_1.browser.wait(this.PE.visibilityOf(protractor_1.element(protractor_1.by.xpath(this._uiPerformanceTestPage))), 10000, "performance page tab is not display");
-                yield protractor_1.element(protractor_1.by.xpath(this._uiPerformanceTestPage)).click();
-                return this;
-            }
-            catch (error) {
-                console.log(error);
-            }
+            general_1.General.isElementVisibleOf(this._uiPerformanceTestPage, 10000, "performance page tab is not display");
+            yield protractor_1.element(protractor_1.by.xpath(this._uiPerformanceTestPage)).click();
+            return this;
         });
     }
     elementOfUserOption(str) {
@@ -107,16 +87,6 @@ class Dashboard {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 return yield protractor_1.browser.wait(this.PE.elementToBeClickable(ele), 20000, "This element can not clickable");
-            }
-            catch (error) {
-                console.log(error);
-            }
-        });
-    }
-    elementIsHighLight(ele) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return this.elementIsClickable(ele);
             }
             catch (error) {
                 console.log(error);
