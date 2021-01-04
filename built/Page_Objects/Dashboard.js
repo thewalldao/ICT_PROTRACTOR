@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Dashboard = void 0;
-const general_1 = require("@Utilities/general");
+const General_1 = require("@Utilities/General");
 const protractor_1 = require("protractor");
 class Dashboard {
     constructor() {
@@ -39,32 +39,32 @@ class Dashboard {
     }
     gotoManageTestPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("go to manage test page");
-            general_1.General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display");
+            General_1.General.printDescribe("go to manage test page");
+            General_1.General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display");
             yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
             return this;
         });
     }
     gotoTestResultPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("go to test result page");
-            general_1.General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display");
+            General_1.General.printDescribe("go to test result page");
+            General_1.General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display");
             yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
             return this;
         });
     }
     gotoReportingPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("go to reporting page");
-            general_1.General.isElementVisibleOf(this._reportingPage, 10000, "reporting tab is not display");
+            General_1.General.printDescribe("go to reporting page");
+            General_1.General.isElementVisibleOf(this._reportingPage, 10000, "reporting tab is not display");
             yield protractor_1.element(protractor_1.by.xpath(this._reportingPage)).click();
             return this;
         });
     }
     gotoUiPerformancePage() {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("go to Ui performance page");
-            general_1.General.isElementVisibleOf(this._uiPerformanceTestPage, 10000, "performance page tab is not display");
+            General_1.General.printDescribe("go to Ui performance page");
+            General_1.General.isElementVisibleOf(this._uiPerformanceTestPage, 10000, "performance page tab is not display");
             yield protractor_1.element(protractor_1.by.xpath(this._uiPerformanceTestPage)).click();
             return this;
         });

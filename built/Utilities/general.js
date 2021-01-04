@@ -161,4 +161,4 @@ class General {
 }
 exports.General = General;
 General.PE = protractor_1.protractor.ExpectedConditions;
-//# sourceMappingURL=general.js.map
+//# sourceMappingURL=General.js.map

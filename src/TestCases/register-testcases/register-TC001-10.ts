@@ -1,10 +1,10 @@
-
-import { LoginPage } from "../../Page_Objects/login-page";
-import { RegisterPage } from "../../Page_Objects/register-page";
-import { User } from "../../Page_Objects/User";
+import 'module-alias/register';
+import { LoginPage } from '@page-objects/login-page';
+import { RegisterPage } from '@page-objects/register-page';
+import { User } from '@page-objects/User';
+import { Login } from '@Utilities/Constant';
+import { General } from '@Utilities/General';
 import { browser } from "protractor";
-import { General } from "../../Utilities/General";
-import { Login } from "../../Utilities/Constant";
 
 describe('Register Test', function () {
     let loginPage = new LoginPage();

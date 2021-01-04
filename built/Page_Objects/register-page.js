@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisterPage = void 0;
 const protractor_1 = require("protractor");
-const general_1 = require("../Utilities/general");
+const General_1 = require("../Utilities/General");
 class RegisterPage {
     constructor() {
         this._usernameField = "//input[@id='Username']";
@@ -160,7 +160,7 @@ class RegisterPage {
     }
     regiterAccountError(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("register a error account");
+            General_1.General.printDescribe("register a error account");
             yield protractor_1.element(protractor_1.by.xpath(this._usernameField)).sendKeys(user.getUsername());
             yield protractor_1.element(protractor_1.by.xpath(this._emailField)).sendKeys(user.getEmail());
             yield protractor_1.element(protractor_1.by.xpath(this._passwordField)).sendKeys(user.getPassWord());

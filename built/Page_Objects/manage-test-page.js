@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ManageTestPage = void 0;
-const general_1 = require("@Utilities/general");
+const General_1 = require("@Utilities/General");
 const protractor_1 = require("protractor");
 const dashboard_1 = require("./dashboard");
 class ManageTestPage extends dashboard_1.Dashboard {
@@ -26,7 +26,7 @@ class ManageTestPage extends dashboard_1.Dashboard {
     }
     clickHelpButton() {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("click help button");
+            General_1.General.printDescribe("click help button");
             try {
                 yield protractor_1.browser.wait(this.PE.visibilityOf(this.elementHelpButton)), 10000, "Help Button is not display";
                 yield this.elementHelpButton.click();

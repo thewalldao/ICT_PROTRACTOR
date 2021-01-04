@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 require("module-alias/register");
 const protractor_1 = require("protractor");
-const general_1 = require("@Utilities/general");
+const General_1 = require("@Utilities/General");
 const Constant_1 = require("@Utilities/Constant");
 const login_page_1 = require("@page-objects/login-page");
 const User_1 = require("@page-objects/User");
@@ -21,7 +21,7 @@ describe('Login Test', function () {
         yield protractor_1.browser.waitForAngularEnabled(false);
         yield protractor_1.browser.get('http://192.168.171.141/');
     }));
-    it(general_1.General.printBox('TC001-01 Verify that user cannot login into Dashboard with blank password'), () => __awaiter(this, void 0, void 0, function* () {
+    it(General_1.General.printBox('TC001-01 Verify that user cannot login into Dashboard with blank password'), () => __awaiter(this, void 0, void 0, function* () {
         let username = Constant_1.Login.ADMIN;
         let password = "";
         let user = new User_1.User(username, password);

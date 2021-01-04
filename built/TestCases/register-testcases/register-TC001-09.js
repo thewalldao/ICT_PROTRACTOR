@@ -9,10 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const login_page_1 = require("../../Page_Objects/login-page");
-const User_1 = require("../../Page_Objects/User");
+require("module-alias/register");
+const login_page_1 = require("@page-objects/login-page");
+const User_1 = require("@page-objects/User");
+const General_1 = require("@Utilities/General");
 const protractor_1 = require("protractor");
-const general_1 = require("../../Utilities/general");
 describe('Register Test', function () {
     let loginPage = new login_page_1.LoginPage();
     beforeEach(() => __awaiter(this, void 0, void 0, function* () {
@@ -21,10 +22,10 @@ describe('Register Test', function () {
         yield protractor_1.browser.manage().window().maximize();
         protractor_1.browser.manage().timeouts().implicitlyWait(5000);
     }));
-    it(general_1.General.printBox('TC001-09 - Verify that user cannot register account with blank password'), () => __awaiter(this, void 0, void 0, function* () {
-        let username = general_1.General.makeUserName(7);
+    it(General_1.General.printBox('TC001-09 - Verify that user cannot register account with blank password'), () => __awaiter(this, void 0, void 0, function* () {
+        let username = General_1.General.makeUserName(7);
         let password = '';
-        let email = general_1.General.randomEmail(10);
+        let email = General_1.General.randomEmail(10);
         let user = new User_1.User(username, password, password, email);
         let registerPage = yield loginPage.gotoRegisterPage();
         yield registerPage.regiterAccountError(user);

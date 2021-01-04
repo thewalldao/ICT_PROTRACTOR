@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginPage = void 0;
 const protractor_1 = require("protractor");
-const general_1 = require("../Utilities/general");
+const General_1 = require("../Utilities/General");
 const dashboard_1 = require("./dashboard");
 const register_page_1 = require("./register-page");
 class LoginPage {
@@ -31,7 +31,7 @@ class LoginPage {
     }
     loginSuccesful(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("Login");
+            General_1.General.printDescribe("Login");
             yield protractor_1.element(protractor_1.by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
             yield protractor_1.element(protractor_1.by.xpath(this._passwordField)).sendKeys(user.getPassWord());
             yield protractor_1.element(protractor_1.by.xpath(this._loginButton)).click();
@@ -40,7 +40,7 @@ class LoginPage {
     }
     gotoRegisterPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("go to register page");
+            General_1.General.printDescribe("go to register page");
             try {
                 yield protractor_1.browser.wait(this.PE.visibilityOf(this.elementOfRegiter()), 10000, "element take to long to response");
                 yield protractor_1.element(protractor_1.by.xpath(this._register)).click();
@@ -53,7 +53,7 @@ class LoginPage {
     }
     loginError(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            general_1.General.printDescribe("Login");
+            General_1.General.printDescribe("Login");
             yield protractor_1.element(protractor_1.by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
             yield protractor_1.element(protractor_1.by.xpath(this._passwordField)).sendKeys(user.getPassWord());
             yield protractor_1.element(protractor_1.by.xpath(this._loginButton)).click();
