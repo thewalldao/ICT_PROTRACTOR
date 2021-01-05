@@ -9,11 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("module-alias/register");
 const login_page_1 = require("@page-objects/login-page");
 const User_1 = require("@page-objects/User");
 const Constant_1 = require("@Utilities/Constant");
 const General_1 = require("@Utilities/General");
-require("module-alias/register");
 const protractor_1 = require("protractor");
 describe('Register Test', function () {
     let loginPage = new login_page_1.LoginPage();
