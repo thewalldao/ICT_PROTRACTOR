@@ -13,6 +13,9 @@ export let config: Config = {
     framework: 'jasmine',
     capabilities: {
         browserName: 'chrome',
+        // chromeOptions: {
+        //     args: [ "--headless", "--disable-gpu", "--window-size=800,600" ]
+        // }
     },
 
     seleniumAddress: 'http://localhost:4444/wd/hub',
