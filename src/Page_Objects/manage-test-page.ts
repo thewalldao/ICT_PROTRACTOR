@@ -1,10 +1,10 @@
 import { General } from "@Utilities/General";
 import { browser, by, element, ElementFinder } from "protractor";
 import { protractor } from "protractor";
-import { Dashboard } from "./dashboard";
-import { User } from "./User";
+import  Dashboard  from "./dashboard";
+import  User  from "./User";
 
-export class ManageTestPage extends Dashboard {
+export default class ManageTestPage extends Dashboard {
     private elementHelpButton: ElementFinder = element(by.xpath("//button[@id='btnGuideline']"));
     private elementSyncTestButton: ElementFinder = element(by.xpath("//button[@id='btnSyncTestsModal']"));
     private elementTestGroups: ElementFinder = element(by.xpath("//a[@href='#testgroups']"));
@@ -13,7 +13,10 @@ export class ManageTestPage extends Dashboard {
     public elementSyncTestText: ElementFinder = element(by.xpath("//button[@id='btnSyncTestsModal']//span"))
     public elementEditTabText: ElementFinder = element(by.xpath("//button[@id='btnEditTab']//span"))
 
- 
+    constructor(){
+        super()
+    }
+
     public async clickHelpButton(): Promise<void> {
         General.printDescribe("click help button")
         try {

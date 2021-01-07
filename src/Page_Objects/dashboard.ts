@@ -1,10 +1,11 @@
+import { DashboardPage, InContactLink, Middle_Link } from "@Utilities/Constant";
 import { General } from "@Utilities/General";
 import { browser, by, element, ElementFinder, protractor, until } from "protractor";
-import { User } from "./User";
+import User from "./User";
 
 
 
-export class Dashboard {
+export default class Dashboard {
     private _manageTestsPage: string = "//li[@id='manageTest']";
     private _testResultPage: string = "//li[@id='testResults']";
     private _reportingPage: string = "//li[@id='reporting']";
@@ -16,6 +17,7 @@ export class Dashboard {
     private _helloUser: string = "//li[@class='nav-item dropdown nav-item-highlight'] //a[@id='navbardrop']";
     private _profileDropdown: string = "//li[@class='nav-item dropdown nav-item-highlight show'] //div[@class='dropdown-menu dropdown-menu-right show']";
     protected PE = protractor.ExpectedConditions;
+    private dasboardlink: string = InContactLink.LOCAL + Middle_Link.MIDDLE_LINK;
 
     private elementOfTitle() {
         return element(by.xpath("//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]"));
@@ -33,37 +35,33 @@ export class Dashboard {
         return element(by.xpath(this._helloUser));
     }
 
-    public async gotoManageTestPage(): Promise<Dashboard> {
+    public gotoManageTestPage(): any {
         General.printDescribe("go to manage test page");
-            // await browser.wait(General.PE.visibilityOf(element(by.xpath(this._manageTestsPage))), 10000, "manage test tab is not display")
-        General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display")
-            await element(by.xpath(this._testResultPage)).click();
-            return this
+        browser.navigate().to(this.dasboardlink+DashboardPage.MANAGER_TEST_PAGE)
+        let ManageTestPage = require("./manage-test-page").default;
+        return new ManageTestPage();
     }
 
-    public async gotoTestResultPage(): Promise<Dashboard> {
+    public gotoTestResultPage(): any {
         General.printDescribe("go to test result page");
-        General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display")
-        // await browser.wait(this.PE.visibilityOf(element(by.xpath(this._testResultPage))), 10000,"test result tab is not display")
-        await element(by.xpath(this._testResultPage)).click();
-        return this
+        browser.navigate().to(this.dasboardlink+DashboardPage.TEST_RESULTS_PAGE)
+        let TestResultsPage = require("./test-result-page").default;
+        return new TestResultsPage()
     }
 
-    public async gotoReportingPage(): Promise<Dashboard> {
+    public gotoReportingPage(): any {
         General.printDescribe("go to reporting page");
-        General.isElementVisibleOf(this._reportingPage, 10000, "reporting tab is not display")
-        // await browser.wait(this.PE.visibilityOf(element(by.xpath(this._reportingPage))), 10000,"reporting tab is not display")
-        await element(by.xpath(this._reportingPage)).click();
-        return this
+        browser.navigate().to(this.dasboardlink+DashboardPage.REPORTING_PAGE)
+        let ReportingPage = require("./reporting-page").default;
+        return new ReportingPage()
     }
 
 
-    public async gotoUiPerformancePage(): Promise<Dashboard> {
+    public gotoUiPerformancePage(): any {
         General.printDescribe("go to Ui performance page");
-        General.isElementVisibleOf(this._uiPerformanceTestPage, 10000, "performance page tab is not display")
-        // await browser.wait(this.PE.visibilityOf(element(by.xpath(this._uiPerformanceTestPage))), 10000, "performance page tab is not display")
-        await element(by.xpath(this._uiPerformanceTestPage)).click();
-        return this
+        browser.navigate().to(this.dasboardlink+DashboardPage.PERFORMANCE_UI_TEST_PAGE)
+        let UiPerformanceTestPage = require("./uiperformance-testcase-page").default;
+        return new UiPerformanceTestPage()
     }
 
 
@@ -120,7 +118,7 @@ export class Dashboard {
 
 
     public async getTitle(): Promise<string> {
-        await browser.wait(this.PE.presenceOf(this.elementOfTitle()), 100000, 'Element taking too long to appear');
+        await browser.wait(this.PE.visibilityOf(this.elementOfTitle()), 100000, 'Element taking too long to appear');
         return this.elementOfTitle().getText();
     }
 

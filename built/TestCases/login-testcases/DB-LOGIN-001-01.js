@@ -8,14 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 require("module-alias/register");
 const protractor_1 = require("protractor");
 const General_1 = require("@Utilities/General");
-const login_page_1 = require("@page-objects/login-page");
-const User_1 = require("@page-objects/User");
+const login_page_1 = __importDefault(require("@page-objects/login-page"));
+const User_1 = __importDefault(require("@page-objects/User"));
 describe('Login Test', function () {
-    let loginPage = new login_page_1.LoginPage();
+    let loginPage = new login_page_1.default();
     beforeEach(() => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.waitForAngularEnabled(false);
         yield protractor_1.browser.get('http://192.168.171.141/');
@@ -23,8 +26,8 @@ describe('Login Test', function () {
     it(General_1.General.printBox('TC001-01 Verify that user cannot login into Dashboard with blank username'), () => __awaiter(this, void 0, void 0, function* () {
         let username = "";
         let password = General_1.General.makeRandomChar(true, true, true, true) + General_1.General.randomLowerCharString(5);
-        let user = new User_1.User(username, password);
-        let loginPage = new login_page_1.LoginPage();
+        let user = new User_1.default(username, password);
+        let loginPage = new login_page_1.default();
         yield loginPage.loginError(user);
         expect(yield loginPage.getErrorFeedBack()).toEqual("Please enter username.", "error feedback is not match");
     }));

@@ -1,6 +1,6 @@
-import { Dashboard } from "./dashboard";
+import  Dashboard  from "./dashboard";
 
-export class ReportingPage extends Dashboard{
+export default class ReportingPage extends Dashboard{
     
     // constructor(){
     //     super()

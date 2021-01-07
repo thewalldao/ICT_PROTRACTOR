@@ -1,8 +1,8 @@
 import { browser, by, element, protractor } from "protractor";
 import { General } from "../Utilities/General";
-import { User } from "./User";
+import  User  from "./User";
 
-export class RegisterPage {
+export default class RegisterPage {
     private _usernameField: string = "//input[@id='Username']";
     private _emailField: string = "//input[@id='Email']";
     private _passwordField: string = "//input[@id='Password']";

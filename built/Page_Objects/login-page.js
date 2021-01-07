@@ -8,20 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginPage = void 0;
 const protractor_1 = require("protractor");
 const General_1 = require("../Utilities/General");
-const dashboard_1 = require("./dashboard");
-const register_page_1 = require("./register-page");
-class LoginPage {
+const dashboard_1 = __importDefault(require("./dashboard"));
+const register_page_1 = __importDefault(require("./register-page"));
+class LoginPage extends dashboard_1.default {
     constructor() {
+        super();
         this._usernameFiled = "//input[@id='Username'][@class='form-control']";
         this._passwordField = "//input[@id='Password'][@class='form-control']";
         this._loginButton = "//button[@id='logIn'][@class='btn btn-primary btn-block']";
         this._register = "//div[@class='row']/button[@type='button']";
         this._errorFeedback = "//div[@class='feedback']//li";
-        this.PE = protractor_1.protractor.ExpectedConditions;
     }
     elementOfRegiter() {
         return protractor_1.element(protractor_1.by.xpath(this._register));
@@ -35,7 +37,7 @@ class LoginPage {
             yield protractor_1.element(protractor_1.by.xpath(this._usernameFiled)).sendKeys(user.getUsername());
             yield protractor_1.element(protractor_1.by.xpath(this._passwordField)).sendKeys(user.getPassWord());
             yield protractor_1.element(protractor_1.by.xpath(this._loginButton)).click();
-            return yield new dashboard_1.Dashboard();
+            return yield new dashboard_1.default();
         });
     }
     gotoRegisterPage() {
@@ -44,7 +46,7 @@ class LoginPage {
             try {
                 yield protractor_1.browser.wait(this.PE.visibilityOf(this.elementOfRegiter()), 10000, "element take to long to response");
                 yield protractor_1.element(protractor_1.by.xpath(this._register)).click();
-                return new register_page_1.RegisterPage();
+                return new register_page_1.default();
             }
             catch (error) {
                 console.log(error);
@@ -67,5 +69,5 @@ class LoginPage {
         });
     }
 }
-exports.LoginPage = LoginPage;
+exports.default = LoginPage;
 //# sourceMappingURL=login-page.js.map

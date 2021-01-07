@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisterPage = void 0;
 const protractor_1 = require("protractor");
 const General_1 = require("../Utilities/General");
 class RegisterPage {
@@ -181,5 +180,5 @@ class RegisterPage {
         });
     }
 }
-exports.RegisterPage = RegisterPage;
+exports.default = RegisterPage;
 //# sourceMappingURL=register-page.js.map

@@ -8,21 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const User_1 = require("../../Page_Objects/User");
+const User_1 = __importDefault(require("../../Page_Objects/User"));
 const protractor_1 = require("protractor");
 const Constant_1 = require("Utilities/Constant");
-const login_page_1 = require("../../Page_Objects/login-page");
-const manage_test_page_1 = require("../../Page_Objects/manage-test-page");
+const login_page_1 = __importDefault(require("../../Page_Objects/login-page"));
+const manage_test_page_1 = __importDefault(require("../../Page_Objects/manage-test-page"));
 describe('Login Test', function () {
-    let user = new User_1.User(Constant_1.Login.USER, Constant_1.Login.USERPASS);
-    let loginPage = new login_page_1.LoginPage();
+    let user = new User_1.default(Constant_1.Login.USER, Constant_1.Login.USERPASS);
+    let loginPage = new login_page_1.default();
     beforeEach(() => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get('http://192.168.171.141/');
     }));
     it('TC1 User Login successfull', () => __awaiter(this, void 0, void 0, function* () {
         yield loginPage.loginSuccesful(user);
-        let managePage = new manage_test_page_1.ManageTestPage();
+        let managePage = new manage_test_page_1.default();
         yield managePage.hiUser(user);
     }));
 });

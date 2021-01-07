@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
 class User {
     constructor(username, password, comfirmpas, email) {
         this.userName = username;
@@ -38,5 +37,5 @@ class User {
         });
     }
 }
-exports.User = User;
+exports.default = User;
 //# sourceMappingURL=User.js.map

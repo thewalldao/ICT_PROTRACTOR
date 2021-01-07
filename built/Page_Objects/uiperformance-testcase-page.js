@@ -1,8 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UiPerformanceTestPage = void 0;
-const dashboard_1 = require("./dashboard");
-class UiPerformanceTestPage extends dashboard_1.Dashboard {
+const dashboard_1 = __importDefault(require("./dashboard"));
+class UiPerformanceTestPage extends dashboard_1.default {
 }
-exports.UiPerformanceTestPage = UiPerformanceTestPage;
+exports.default = UiPerformanceTestPage;
 //# sourceMappingURL=uiperformance-testcase-page.js.map

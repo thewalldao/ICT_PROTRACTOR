@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Dashboard = void 0;
+const Constant_1 = require("@Utilities/Constant");
 const General_1 = require("@Utilities/General");
 const protractor_1 = require("protractor");
 class Dashboard {
@@ -24,6 +24,7 @@ class Dashboard {
         this._helloUser = "//li[@class='nav-item dropdown nav-item-highlight'] //a[@id='navbardrop']";
         this._profileDropdown = "//li[@class='nav-item dropdown nav-item-highlight show'] //div[@class='dropdown-menu dropdown-menu-right show']";
         this.PE = protractor_1.protractor.ExpectedConditions;
+        this.dasboardlink = Constant_1.InContactLink.LOCAL + Constant_1.Middle_Link.MIDDLE_LINK;
     }
     elementOfTitle() {
         return protractor_1.element(protractor_1.by.xpath("//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]"));
@@ -38,36 +39,28 @@ class Dashboard {
         return protractor_1.element(protractor_1.by.xpath(this._helloUser));
     }
     gotoManageTestPage() {
-        return __awaiter(this, void 0, void 0, function* () {
-            General_1.General.printDescribe("go to manage test page");
-            General_1.General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display");
-            yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
-            return this;
-        });
+        General_1.General.printDescribe("go to manage test page");
+        protractor_1.browser.navigate().to(this.dasboardlink + Constant_1.DashboardPage.MANAGER_TEST_PAGE);
+        let ManageTestPage = require("./manage-test-page").default;
+        return new ManageTestPage();
     }
     gotoTestResultPage() {
-        return __awaiter(this, void 0, void 0, function* () {
-            General_1.General.printDescribe("go to test result page");
-            General_1.General.isElementVisibleOf(this._testResultPage, 10000, "test result tab is not display");
-            yield protractor_1.element(protractor_1.by.xpath(this._testResultPage)).click();
-            return this;
-        });
+        General_1.General.printDescribe("go to test result page");
+        protractor_1.browser.navigate().to(this.dasboardlink + Constant_1.DashboardPage.TEST_RESULTS_PAGE);
+        let TestResultsPage = require("./test-result-page").default;
+        return new TestResultsPage();
     }
     gotoReportingPage() {
-        return __awaiter(this, void 0, void 0, function* () {
-            General_1.General.printDescribe("go to reporting page");
-            General_1.General.isElementVisibleOf(this._reportingPage, 10000, "reporting tab is not display");
-            yield protractor_1.element(protractor_1.by.xpath(this._reportingPage)).click();
-            return this;
-        });
+        General_1.General.printDescribe("go to reporting page");
+        protractor_1.browser.navigate().to(this.dasboardlink + Constant_1.DashboardPage.REPORTING_PAGE);
+        let ReportingPage = require("./reporting-page").default;
+        return new ReportingPage();
     }
     gotoUiPerformancePage() {
-        return __awaiter(this, void 0, void 0, function* () {
-            General_1.General.printDescribe("go to Ui performance page");
-            General_1.General.isElementVisibleOf(this._uiPerformanceTestPage, 10000, "performance page tab is not display");
-            yield protractor_1.element(protractor_1.by.xpath(this._uiPerformanceTestPage)).click();
-            return this;
-        });
+        General_1.General.printDescribe("go to Ui performance page");
+        protractor_1.browser.navigate().to(this.dasboardlink + Constant_1.DashboardPage.PERFORMANCE_UI_TEST_PAGE);
+        let UiPerformanceTestPage = require("./uiperformance-testcase-page").default;
+        return new UiPerformanceTestPage();
     }
     elementOfUserOption(str) {
         return protractor_1.element(protractor_1.by.xpath(`//li[@class='nav-item dropdown nav-item-highlight show'] //div[@class='dropdown-menu dropdown-menu-right show']//a[contains(.,'${str}')]`));
@@ -95,7 +88,7 @@ class Dashboard {
     }
     getTitle() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield protractor_1.browser.wait(this.PE.presenceOf(this.elementOfTitle()), 100000, 'Element taking too long to appear');
+            yield protractor_1.browser.wait(this.PE.visibilityOf(this.elementOfTitle()), 100000, 'Element taking too long to appear');
             return this.elementOfTitle().getText();
         });
     }
@@ -111,5 +104,5 @@ class Dashboard {
         });
     }
 }
-exports.Dashboard = Dashboard;
+exports.default = Dashboard;
 //# sourceMappingURL=dashboard.js.map

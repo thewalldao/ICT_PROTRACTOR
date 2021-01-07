@@ -2,10 +2,11 @@ import 'module-alias/register';
 import { browser } from "protractor";
 import { General } from '@Utilities/General';
 import { Login } from '@Utilities/Constant';
-import { LoginPage } from '@page-objects/login-page';
-import { User } from '@page-objects/User';
-import { Dashboard } from '@page-objects/dashboard';
-import { ManageTestPage } from '@page-objects/manage-test-page';
+import User from '@page-objects/User';
+import LoginPage from '@page-objects/login-page';
+import Dashboard from '@page-objects/dashboard';
+import ManageTestPage from '@page-objects/manage-test-page';
+
 
 
 describe('guideline test', function () {

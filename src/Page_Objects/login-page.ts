@@ -1,15 +1,15 @@
 import { browser, by, element, ElementFinder, protractor } from "protractor";
 import { General } from "../Utilities/General";
-import { Dashboard } from "./dashboard";
-import { ManageTestPage } from "./manage-test-page";
-import { RegisterPage } from "./register-page";
-import { User } from "./user";
+import  Dashboard  from "./dashboard";
+import  RegisterPage  from "./register-page";
+import  User  from "./user";
 
 
 
-export class LoginPage {
+export default class LoginPage extends Dashboard {
 
     constructor() {
+        super()
     }
 
     private _usernameFiled: string = "//input[@id='Username'][@class='form-control']";
@@ -17,7 +17,6 @@ export class LoginPage {
     private _loginButton: string = "//button[@id='logIn'][@class='btn btn-primary btn-block']";
     private _register: string = "//div[@class='row']/button[@type='button']";
     private _errorFeedback: string = "//div[@class='feedback']//li"
-    private PE = protractor.ExpectedConditions;
 
     protected elementOfRegiter(){
         return element(by.xpath(this._register));

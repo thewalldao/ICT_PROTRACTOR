@@ -1,9 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
+const project_path_1 = __importDefault(require("@test-data/general/project-path"));
 exports.config = {
     specs: [
-        'E:/TUANDAO/PROJECT/SimpleProtractorTest/built/TestCases/login-test.js'
+        project_path_1.default.testCases + 'login-test.js'
     ],
     framework: 'jasmine',
     capabilities: {

@@ -2,8 +2,8 @@ import 'module-alias/register';
 import { browser } from "protractor";
 import { General } from '@Utilities/General';
 import { Login } from '@Utilities/Constant';
-import { LoginPage } from '@page-objects/login-page';
-import { User } from '@page-objects/User';
+import  LoginPage  from '@page-objects/login-page';
+import  User  from '@page-objects/User';
 
 
 describe('Login Test', function () {

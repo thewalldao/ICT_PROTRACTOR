@@ -1,8 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ReportingPage = void 0;
-const dashboard_1 = require("./dashboard");
-class ReportingPage extends dashboard_1.Dashboard {
+const dashboard_1 = __importDefault(require("./dashboard"));
+class ReportingPage extends dashboard_1.default {
 }
-exports.ReportingPage = ReportingPage;
+exports.default = ReportingPage;
 //# sourceMappingURL=reporting-page.js.map

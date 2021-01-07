@@ -8,14 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ManageTestPage = void 0;
 const General_1 = require("@Utilities/General");
 const protractor_1 = require("protractor");
-const dashboard_1 = require("./dashboard");
-class ManageTestPage extends dashboard_1.Dashboard {
+const dashboard_1 = __importDefault(require("./dashboard"));
+class ManageTestPage extends dashboard_1.default {
     constructor() {
-        super(...arguments);
+        super();
         this.elementHelpButton = protractor_1.element(protractor_1.by.xpath("//button[@id='btnGuideline']"));
         this.elementSyncTestButton = protractor_1.element(protractor_1.by.xpath("//button[@id='btnSyncTestsModal']"));
         this.elementTestGroups = protractor_1.element(protractor_1.by.xpath("//a[@href='#testgroups']"));
@@ -37,5 +39,5 @@ class ManageTestPage extends dashboard_1.Dashboard {
         });
     }
 }
-exports.ManageTestPage = ManageTestPage;
+exports.default = ManageTestPage;
 //# sourceMappingURL=manage-test-page.js.map

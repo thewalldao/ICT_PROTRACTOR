@@ -3,9 +3,9 @@ import { browser } from "protractor";
 import { appendFile } from "fs";
 import { General } from '@Utilities/General';
 import { Register } from '@Utilities/Constant';
-import { LoginPage } from '@page-objects/login-page';
-import { User } from '@page-objects/User';
-import { RegisterPage } from '@page-objects/register-page';
+import LoginPage from "@page-objects/login-page";
+import RegisterPage from "@page-objects/register-page";
+import User from "@page-objects/User";
 
 
 
@@ -14,8 +14,8 @@ describe('Register Test', function () {
     beforeEach(async () => {
         await browser.waitForAngularEnabled(false);
         await browser.get('http://192.168.171.141/');
-        await browser.manage().window().maximize();
-        browser.manage().timeouts().implicitlyWait(5000);
+        // await browser.manage().window().maximize();
+        // browser.manage().timeouts().implicitlyWait(5000);
     });
     it(General.printBox('TC001-11 Verify that user cannot register account with an actived email'), async () => {
         let username = General.makeUserName(7);

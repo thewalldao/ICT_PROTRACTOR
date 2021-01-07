@@ -1,6 +1,6 @@
-import { Dashboard } from "./dashboard";
+import  Dashboard  from "./dashboard";
 
-export class UiPerformanceTestPage extends Dashboard{
+export default class UiPerformanceTestPage extends Dashboard{
     // constructor(){
     //     super()
     // }

@@ -1,4 +1,4 @@
-export class User{
+export default class User{
     private userName:string;
     private email:string;
     private passWord:string;

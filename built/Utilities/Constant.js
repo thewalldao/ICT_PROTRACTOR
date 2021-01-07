@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Register = exports.UserOption = exports.Login = void 0;
+exports.Middle_Link = exports.DashboardPage = exports.InContactLink = exports.Register = exports.UserOption = exports.Login = void 0;
 var Login;
 (function (Login) {
     Login["ADMIN"] = "admin";
@@ -23,4 +23,19 @@ var Register;
 (function (Register) {
     Register["EMAIL"] = "thewalldao@gmail.com";
 })(Register = exports.Register || (exports.Register = {}));
+var InContactLink;
+(function (InContactLink) {
+    InContactLink["LOCAL"] = "http://192.168.171.141/";
+})(InContactLink = exports.InContactLink || (exports.InContactLink = {}));
+var DashboardPage;
+(function (DashboardPage) {
+    DashboardPage["MANAGER_TEST_PAGE"] = "manage-tests";
+    DashboardPage["TEST_RESULTS_PAGE"] = "test-results";
+    DashboardPage["REPORTING_PAGE"] = "reporting";
+    DashboardPage["PERFORMANCE_UI_TEST_PAGE"] = "performance-ui-test";
+})(DashboardPage = exports.DashboardPage || (exports.DashboardPage = {}));
+var Middle_Link;
+(function (Middle_Link) {
+    Middle_Link["MIDDLE_LINK"] = "#/dashboard/";
+})(Middle_Link = exports.Middle_Link || (exports.Middle_Link = {}));
 //# sourceMappingURL=Constant.js.map

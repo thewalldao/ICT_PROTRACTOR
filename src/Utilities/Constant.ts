@@ -19,3 +19,18 @@ export enum UserOption{
 export enum Register{
     EMAIL = "thewalldao@gmail.com"
 }
+
+export enum InContactLink{
+    LOCAL = "http://192.168.171.141/"
+}
+
+export enum DashboardPage{
+    MANAGER_TEST_PAGE = "manage-tests",
+    TEST_RESULTS_PAGE = "test-results",
+    REPORTING_PAGE = "reporting",
+    PERFORMANCE_UI_TEST_PAGE = "performance-ui-test"
+}
+
+export enum Middle_Link{
+    MIDDLE_LINK = "#/dashboard/"
+}
