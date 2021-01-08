@@ -3,6 +3,7 @@ import { General } from "../Utilities/General";
 import  User  from "./User";
 
 export default class RegisterPage {
+    private static registerpage :RegisterPage = null;
     private _usernameField: string = "//input[@id='Username']";
     private _emailField: string = "//input[@id='Email']";
     private _passwordField: string = "//input[@id='Password']";
@@ -170,5 +171,10 @@ export default class RegisterPage {
         catch (error) {
             console.log(error);
         }
+    }
+
+    public static getInstance(): RegisterPage{
+        this.registerpage = new RegisterPage()
+        return this.registerpage
     }
 }

@@ -7,6 +7,7 @@ import { errorwrapper } from "@Utilities/protractor-wrappers/error-wrapper";
 import { by, ElementFinder, ExpectedConditions as until, Locator, ProtractorBrowser } from "protractor";
 import { error, ILocation, ISize, WebElementPromise, WebDriver } from "selenium-webdriver";
 import { Utility } from "@Utilities/general/utility";
+import { General } from "@Utilities/General";
 
 export default class ElementWrapper {
 
@@ -69,21 +70,26 @@ export default class ElementWrapper {
         return this;
     }
 
-    public async waitForVisibilityOfCustom(timeoutInSecond: number = this._elementTimeout,expectTime: number): Promise<this> {
+    public async waitForVisibilityOfCustom(timeoutInSecond: number = this._elementTimeout,expectTimeInSecond: number, elementName:string = ""): Promise<this> {
+        General.printDescribe("wait for element visible")
         try {
             let stopWatch = new StopWatch();
-            stopWatch.startClock()
+            stopWatch.startClock();
             let isElementDisplayed: boolean = await this.isDisplayed(stopWatch.getTimeLeftInSecond(timeoutInSecond));
 
             while (stopWatch.getTimeLeftInSecond(timeoutInSecond) > 0 && !isElementDisplayed){
-                if (stopWatch.getElapsedTimeInSecond() === expectTime){
-                    console.log(`${stopWatch.getElapsedTimeInSecond()}s is pass but element is not be found`)
+                if (stopWatch.getElapsedTimeInSecond() === expectTimeInSecond){
+                    General.printDescribe(`${stopWatch.getElapsedTimeInSecond()}s is passed but element has not been found`)
                 }
             }
             if(!isElementDisplayed){
-                console.log("Time out but element can not be found")
+                General.printDescribe("Time out but element can not be found")
             }else{
-                console.log(`element is found at ${stopWatch.getElapsedTimeInSecond()}s`)
+                if (elementName !== ""){
+                    General.printDescribe(`element of ${elementName} is found at ${stopWatch.getElapsedTimeInSecond()}s`)
+                }else{
+                    General.printDescribe(`element is found at ${stopWatch.getElapsedTimeInSecond()}s`)
+                }
             }
 
             return this;

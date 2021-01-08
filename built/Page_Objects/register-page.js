@@ -179,6 +179,11 @@ class RegisterPage {
             }
         });
     }
+    static getInstance() {
+        this.registerpage = new RegisterPage();
+        return this.registerpage;
+    }
 }
 exports.default = RegisterPage;
+RegisterPage.registerpage = null;
 //# sourceMappingURL=register-page.js.map

@@ -1,16 +1,17 @@
 import { DashboardPage, InContactLink, Middle_Link } from "@Utilities/Constant";
 import { General } from "@Utilities/General";
+import ElementWrapper from "@Utilities/protractor-wrappers/element-wrapper";
 import { browser, by, element, ElementFinder, protractor, until } from "protractor";
 import User from "./User";
 
 
 
 export default class Dashboard {
-    private _manageTestsPage: string = "//li[@id='manageTest']";
-    private _testResultPage: string = "//li[@id='testResults']";
-    private _reportingPage: string = "//li[@id='reporting']";
-    private _uiPerformanceTestPage: string = "//li[@id='uiPerformanceTest']";
-    private _administratorPage: string = "//li[@id='administration']";
+    private elemanageTestsPage: ElementWrapper = new ElementWrapper(by.xpath("//li[@id='manageTest']"));
+    private eletestResultPage: ElementWrapper =  new ElementWrapper(by.xpath("//li[@id='testResults']"));
+    private elereportingPage: ElementWrapper =  new ElementWrapper(by.xpath("//li[@id='reporting']"));
+    private eleuiPerformanceTestPage: ElementWrapper =  new ElementWrapper(by.xpath("//li[@id='uiPerformanceTest']"));
+    private eleadministratorPage: string = "//li[@id='administration']";
     // private _userProfile: string = "//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span";
     private _title: string = "//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]";
     private _loadingpage: string = "//div[@class='loader']";
@@ -35,33 +36,41 @@ export default class Dashboard {
         return element(by.xpath(this._helloUser));
     }
 
-    public gotoManageTestPage(): any {
-        General.printDescribe("go to manage test page");
-        browser.navigate().to(this.dasboardlink+DashboardPage.MANAGER_TEST_PAGE)
+    public async gotoManageTestPage(): Promise<any> {
+        General.printDescribe("go to manage test page");    
+        await this.elemanageTestsPage.waitForVisibilityOfCustom(10,5, "Manage Test Page tab")
+        await this.elemanageTestsPage.click();
+        // browser.navigate().to(this.dasboardlink+DashboardPage.MANAGER_TEST_PAGE)
         let ManageTestPage = require("./manage-test-page").default;
-        return new ManageTestPage();
+        return ManageTestPage.getInstance();
     }
 
-    public gotoTestResultPage(): any {
+    public async gotoTestResultPage(): Promise<any> {
         General.printDescribe("go to test result page");
-        browser.navigate().to(this.dasboardlink+DashboardPage.TEST_RESULTS_PAGE)
+        await this.eletestResultPage.waitForVisibilityOfCustom(10,5, "Test Result Page tab")
+        await this.eletestResultPage.click()
+        // browser.navigate().to(this.dasboardlink+DashboardPage.TEST_RESULTS_PAGE)
         let TestResultsPage = require("./test-result-page").default;
-        return new TestResultsPage()
+        return TestResultsPage.getInstance();
     }
 
-    public gotoReportingPage(): any {
+    public async gotoReportingPage(): Promise<any> {
         General.printDescribe("go to reporting page");
-        browser.navigate().to(this.dasboardlink+DashboardPage.REPORTING_PAGE)
+        await this.elereportingPage.waitForVisibilityOfCustom(10,5, "Reporting Page tab")
+        await this.elereportingPage.click()
+        // browser.navigate().to(this.dasboardlink+DashboardPage.REPORTING_PAGE)
         let ReportingPage = require("./reporting-page").default;
-        return new ReportingPage()
+        return ReportingPage.getInstance();
     }
 
 
-    public gotoUiPerformancePage(): any {
+    public async gotoUiPerformancePage(): Promise<any> {
         General.printDescribe("go to Ui performance page");
-        browser.navigate().to(this.dasboardlink+DashboardPage.PERFORMANCE_UI_TEST_PAGE)
+        await this.eleuiPerformanceTestPage.waitForVisibilityOfCustom(10,5, "UI Performance Page Tab")
+        await this.eleuiPerformanceTestPage.click()
+        // browser.navigate().to(this.dasboardlink+DashboardPage.PERFORMANCE_UI_TEST_PAGE)
         let UiPerformanceTestPage = require("./uiperformance-testcase-page").default;
-        return new UiPerformanceTestPage()
+        return UiPerformanceTestPage.getInstance()
     }
 
 

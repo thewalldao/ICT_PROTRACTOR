@@ -21,6 +21,7 @@ const error_wrapper_1 = require("@Utilities/protractor-wrappers/error-wrapper");
 const protractor_1 = require("protractor");
 const selenium_webdriver_1 = require("selenium-webdriver");
 const utility_1 = require("@Utilities/general/utility");
+const General_1 = require("@Utilities/General");
 class ElementWrapper {
     constructor(obj) {
         this._elementTimeout = test_run_info_1.default.elementTimeout;
@@ -53,22 +54,28 @@ class ElementWrapper {
             return this;
         });
     }
-    waitForVisibilityOfCustom(timeoutInSecond = this._elementTimeout, expectTime) {
+    waitForVisibilityOfCustom(timeoutInSecond = this._elementTimeout, expectTimeInSecond, elementName = "") {
         return __awaiter(this, void 0, void 0, function* () {
+            General_1.General.printDescribe("wait for element visible");
             try {
                 let stopWatch = new stop_watch_1.default();
                 stopWatch.startClock();
                 let isElementDisplayed = yield this.isDisplayed(stopWatch.getTimeLeftInSecond(timeoutInSecond));
                 while (stopWatch.getTimeLeftInSecond(timeoutInSecond) > 0 && !isElementDisplayed) {
-                    if (stopWatch.getElapsedTimeInSecond() === expectTime) {
-                        console.log(`${stopWatch.getElapsedTimeInSecond()}s is pass but element is not be found`);
+                    if (stopWatch.getElapsedTimeInSecond() === expectTimeInSecond) {
+                        General_1.General.printDescribe(`${stopWatch.getElapsedTimeInSecond()}s is passed but element has not been found`);
                     }
                 }
                 if (!isElementDisplayed) {
-                    console.log("Time out but element can not be found");
+                    General_1.General.printDescribe("Time out but element can not be found");
                 }
                 else {
-                    console.log(`element is found at ${stopWatch.getElapsedTimeInSecond()}s`);
+                    if (elementName !== "") {
+                        General_1.General.printDescribe(`element of ${elementName} is found at ${stopWatch.getElapsedTimeInSecond()}s`);
+                    }
+                    else {
+                        General_1.General.printDescribe(`element is found at ${stopWatch.getElapsedTimeInSecond()}s`);
+                    }
                 }
                 return this;
             }

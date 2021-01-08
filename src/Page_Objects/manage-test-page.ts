@@ -5,6 +5,7 @@ import  Dashboard  from "./dashboard";
 import  User  from "./User";
 
 export default class ManageTestPage extends Dashboard {
+    private static manageTestPage :ManageTestPage = null;
     private elementHelpButton: ElementFinder = element(by.xpath("//button[@id='btnGuideline']"));
     private elementSyncTestButton: ElementFinder = element(by.xpath("//button[@id='btnSyncTestsModal']"));
     private elementTestGroups: ElementFinder = element(by.xpath("//a[@href='#testgroups']"));
@@ -25,5 +26,10 @@ export default class ManageTestPage extends Dashboard {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    public static getInstance():ManageTestPage{
+        this.manageTestPage = new ManageTestPage()
+        return this.manageTestPage
     }
 }

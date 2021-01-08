@@ -38,6 +38,11 @@ class ManageTestPage extends dashboard_1.default {
             }
         });
     }
+    static getInstance() {
+        this.manageTestPage = new ManageTestPage();
+        return this.manageTestPage;
+    }
 }
 exports.default = ManageTestPage;
+ManageTestPage.manageTestPage = null;
 //# sourceMappingURL=manage-test-page.js.map

@@ -56,7 +56,7 @@ __decorate([
     __metadata("design:type", Number)
 ], ConfigInfo.prototype, "testTimeout", void 0);
 ConfigInfo = __decorate([
-    json2typescript_1.JsonObject
+    json2typescript_1.JsonObject("")
 ], ConfigInfo);
 exports.ConfigInfo = ConfigInfo;
 //# sourceMappingURL=config.js.map

@@ -1,6 +1,6 @@
 import { JsonObject, JsonProperty } from "json2typescript";
 
-@JsonObject
+@JsonObject("")
 export class ConfigInfo {
     @JsonProperty("clusterId", String)
     clusterId: string = undefined;
