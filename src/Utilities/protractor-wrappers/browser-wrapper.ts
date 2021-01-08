@@ -607,6 +607,7 @@ export default class BrowserWrapper {
             throw new errorwrapper.CustomError(this.wait, err.message);
         }
     }
+    
 
     /**
      * Find all elements by locator

@@ -69,6 +69,30 @@ export default class ElementWrapper {
         return this;
     }
 
+    public async waitForVisibilityOfCustom(timeoutInSecond: number = this._elementTimeout,expectTime: number): Promise<this> {
+        try {
+            let stopWatch = new StopWatch();
+            stopWatch.startClock()
+            let isElementDisplayed: boolean = await this.isDisplayed(stopWatch.getTimeLeftInSecond(timeoutInSecond));
+
+            while (stopWatch.getTimeLeftInSecond(timeoutInSecond) > 0 && !isElementDisplayed){
+                if (stopWatch.getElapsedTimeInSecond() === expectTime){
+                    console.log(`${stopWatch.getElapsedTimeInSecond()}s is pass but element is not be found`)
+                }
+            }
+            if(!isElementDisplayed){
+                console.log("Time out but element can not be found")
+            }else{
+                console.log(`element is found at ${stopWatch.getElapsedTimeInSecond()}s`)
+            }
+
+            return this;
+        } catch (err) {
+            throw new errorwrapper.CustomError(this.waitForVisibilityOfCustom, err.message);
+        }
+    }
+
+
     /**
      * Click and wait for click is effect
      * @param {number} [timeoutInSecond=this._elementTimeout] maximum time to wait
@@ -359,13 +383,13 @@ export default class ElementWrapper {
         sw.startClock();
 
         try {
-            await this.waitForPresenceOf(sw.getTimeLeftInSecond(timeoutInSecond*2));
+            await this.waitForPresenceOf(sw.getTimeLeftInSecond(timeoutInSecond * 2));
             return await this._element.getCssValue(cssValue);
-            
+
         } catch (err) {
-            if (err instanceof error.StaleElementReferenceError || err.message.includes("stale element reference: element is not attached to the page document")){
-                return await this.getCssValue(cssValue, sw.getTimeLeftInSecond(timeoutInSecond*2
-                    ));
+            if (err instanceof error.StaleElementReferenceError || err.message.includes("stale element reference: element is not attached to the page document")) {
+                return await this.getCssValue(cssValue, sw.getTimeLeftInSecond(timeoutInSecond * 2
+                ));
             } else {
                 throw new errorwrapper.CustomError(this.getCssValue, err.message);
             }
@@ -396,7 +420,7 @@ export default class ElementWrapper {
      * @memberof ElementWrapper
      */
     public async getText(timeoutInSecond: number = this._elementTimeout): Promise<string> {
-      
+
         let sw = new StopWatch();
         sw.startClock();
         try {
@@ -892,7 +916,7 @@ export default class ElementWrapper {
     public async scrollToElementByClass(timeoutInSecond: number = this._elementTimeout): Promise<this> {
         try {
             await Utility.delay(TestRunInfo.shortTimeout);
-            let className:string = await this._element.getAttribute("class");
+            let className: string = await this._element.getAttribute("class");
             await BrowserWrapper.executeScript(`document.getElementsByClassName('${className}')[0].scrollIntoView(false);`);
             return this;
         } catch (err) {
@@ -997,7 +1021,7 @@ export default class ElementWrapper {
     * @returns {Promise<number>}
     * @memberof ElementWrapper
     */
-    public async getElementCoordinate(position: CoordinateType, timeoutInSecond?: number, ): Promise<number> {
+    public async getElementCoordinate(position: CoordinateType, timeoutInSecond?: number,): Promise<number> {
         try {
             await this.waitForVisibilityOf(timeoutInSecond);
             let location: ILocation = await this._element.getLocation();

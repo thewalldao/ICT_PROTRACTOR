@@ -53,6 +53,30 @@ class ElementWrapper {
             return this;
         });
     }
+    waitForVisibilityOfCustom(timeoutInSecond = this._elementTimeout, expectTime) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let stopWatch = new stop_watch_1.default();
+                stopWatch.startClock();
+                let isElementDisplayed = yield this.isDisplayed(stopWatch.getTimeLeftInSecond(timeoutInSecond));
+                while (stopWatch.getTimeLeftInSecond(timeoutInSecond) > 0 && !isElementDisplayed) {
+                    if (stopWatch.getElapsedTimeInSecond() === expectTime) {
+                        console.log(`${stopWatch.getElapsedTimeInSecond()}s is pass but element is not be found`);
+                    }
+                }
+                if (!isElementDisplayed) {
+                    console.log("Time out but element can not be found");
+                }
+                else {
+                    console.log(`element is found at ${stopWatch.getElapsedTimeInSecond()}s`);
+                }
+                return this;
+            }
+            catch (err) {
+                throw new error_wrapper_1.errorwrapper.CustomError(this.waitForVisibilityOfCustom, err.message);
+            }
+        });
+    }
     click(timeoutInSecond = this._elementTimeout) {
         return __awaiter(this, void 0, void 0, function* () {
             if (timeoutInSecond < 0) {

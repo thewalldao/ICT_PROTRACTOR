@@ -1,0 +1,2 @@
+\\data-server\LogiGearVN\Public\Training\EnglishPRSampleTest
+\\data-server\LogiGearVN\Software\Windows\Browsers\Chrome
