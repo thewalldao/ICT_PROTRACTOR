@@ -7,6 +7,4 @@ export default class ReportingPage extends Dashboard{
         this.reportingPage = new ReportingPage()
         return this.reportingPage
     }
-    
-
 }

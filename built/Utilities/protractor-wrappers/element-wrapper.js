@@ -66,16 +66,16 @@ class ElementWrapper {
                         General_1.General.printDescribe(`${stopWatch.getElapsedTimeInSecond()}s is passed but element has not been found`);
                     }
                 }
-                if (!isElementDisplayed) {
-                    General_1.General.printDescribe("Time out but element can not be found");
-                }
-                else {
+                if (isElementDisplayed) {
                     if (elementName !== "") {
                         General_1.General.printDescribe(`element of ${elementName} is found at ${stopWatch.getElapsedTimeInSecond()}s`);
                     }
                     else {
                         General_1.General.printDescribe(`element is found at ${stopWatch.getElapsedTimeInSecond()}s`);
                     }
+                }
+                else {
+                    throw new Error(`Element of ${elementName} can not be found`);
                 }
                 return this;
             }

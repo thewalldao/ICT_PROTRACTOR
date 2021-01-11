@@ -82,14 +82,15 @@ export default class ElementWrapper {
                     General.printDescribe(`${stopWatch.getElapsedTimeInSecond()}s is passed but element has not been found`)
                 }
             }
-            if(!isElementDisplayed){
-                General.printDescribe("Time out but element can not be found")
-            }else{
+            if(isElementDisplayed){
                 if (elementName !== ""){
                     General.printDescribe(`element of ${elementName} is found at ${stopWatch.getElapsedTimeInSecond()}s`)
                 }else{
                     General.printDescribe(`element is found at ${stopWatch.getElapsedTimeInSecond()}s`)
                 }
+                // General.printDescribe("Time out but element can not be found")
+            }else{
+                throw new Error(`Element of ${elementName} can not be found`)
             }
 
             return this;
