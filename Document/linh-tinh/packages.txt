@@ -1,0 +1,9 @@
+crow-translate
+zenkit
+mindomo
+Tesseract-OCR
+
+awesome package 
+- crontab
+
+•	\\data-server\LogiGearVN\Public\Training\EnglishPRSampleTest

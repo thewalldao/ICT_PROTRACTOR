@@ -1,0 +1,16 @@
+export class HinhHoc {
+  draw ();
+  draw (canh: number);
+  draw (dai: number, rong: number);
+  draw (param1?: number, param2?: number) {
+    if (param1 === undefined && param2 === undefined) {
+       console.log('Ve hinh');
+    }
+    if (param2 === undefined) {
+       console.log('Ve hinh vuong');
+    }
+    if (param1 !== undefined && param2 !== undefined) {
+       console.log('Ve hinh chu nhat');
+    }
+  }
+}
