@@ -18,6 +18,7 @@ export default class Dashboard {
     private _title: string = "//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]";
     private elementwrapperOfTitle: ElementWrapper = new ElementWrapper(by.xpath("//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]"))
     private elementloadingpageHidden: ElementWrapper = new ElementWrapper(by.xpath("//div[@id='loading-screen-container'][@hidden='hidden']"));
+    private elementOfHidden : ElementWrapper = new ElementWrapper(by.xpath("//div[@hidden='hidden']"));
     private elementCustomScrollBar: ElementWrapper = new ElementWrapper(by.xpath("//body[@class='custom-scrollbar']"));
     private _helloUser: string = "//li[@class='nav-item dropdown nav-item-highlight'] //a[@id='navbardrop']";
     private _profileDropdown: string = "//li[@class='nav-item dropdown nav-item-highlight show'] //div[@class='dropdown-menu dropdown-menu-right show']";
@@ -98,6 +99,32 @@ export default class Dashboard {
                 }
             }
             if (await this.elementCustomScrollBar.getAttribute("style") === "overflow-y: visible;") {
+                General.printDescribe(`element of Loading is disapeared at ${stopWatch.getElapsedTimeInSecond()}s`)
+            } else {
+                throw new Error("Element of Loading has not been disapeared")
+            }
+            // await this.elementloadingpageHidden.waitForHiddenElementAppearCustom(timeOUt, expectTimeOut, "loading");
+            return this
+        } catch (err) {
+            throw new errorwrapper.CustomError(this.waitingForLoadingDisapear, err.message);
+        }
+    }
+
+    public async waitingForLoadingDisapearTest(timeOUt: number = 10, expectTimeOut: number): Promise<this>{
+         General.printDescribe("Waiting element of title Loading disapear Test");
+        try {
+            let stopWatch = new StopWatch();
+            stopWatch.startClock();
+            let flagPassExpect: number = 1;
+            // browser.sleep(0.5 * 1000)
+            // let isElementHiddenExist = ((await element.all(by.xpath("//div[@hidden='hidden']"))).length)
+            while ((stopWatch.getTimeLeftInSecond(timeOUt) > 0) && (((await element.all(by.xpath("//div[@hidden='hidden']"))).length) === 0)) {
+                if ((stopWatch.getElapsedTimeInSecond() >= expectTimeOut) && flagPassExpect === 1) {
+                    General.printDescribe(`${expectTimeOut}s is passed but element has not been disapeared`)
+                    flagPassExpect = 0;
+                }
+            }
+            if (((await element.all(by.xpath("//div[@hidden='hidden']"))).length) !== 0) {
                 General.printDescribe(`element of Loading is disapeared at ${stopWatch.getElapsedTimeInSecond()}s`)
             } else {
                 throw new Error("Element of Loading has not been disapeared")

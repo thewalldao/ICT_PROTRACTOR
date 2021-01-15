@@ -29,13 +29,13 @@ describe('navigate between pages', function () {
 
         let dashBoard = await loginPage.loginSuccesful(user);
         let testResultPage = await dashBoard.gotoTestResultPage();
-        await testResultPage.waitingForElementTitleVisible(20,10);
-        await testResultPage.checkElementWrapperNotEmptyText();
-        await testResultPage.waitingForLoadingDisapear(40,5)
+        // await testResultPage.waitingForElementTitleVisible(20,10);
+        // await testResultPage.checkElementWrapperNotEmptyText();
+        await testResultPage.waitingForLoadingDisapearTest(40,5)
         await testResultPage.searchTest(testNameWithBrowserAndCluster);
-        await testResultPage.waitingForLoadingDisapear(40,5)
+        await testResultPage.waitingForLoadingDisapearTest(40,5)
         expect(await testResultPage.isLastestTestResultDisplay(testNameWithBrowserAndCluster)).toBe(true,"test result is not display")
-        let errorList:ElementWrapper[] = await testResultPage.checkTestResultDisplayCorrectly(testInfo);
+        let errorList:string[] = await testResultPage.checkTestResultDisplayCorrectly(testInfo);
         if (errorList.length !== 0){
             errorList.forEach(element => {
                 console.log(element)

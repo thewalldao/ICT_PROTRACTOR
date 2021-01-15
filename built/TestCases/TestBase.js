@@ -22,6 +22,7 @@ function testBase() {
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000;
         yield browser_wrapper_1.default.waitForAngularEnabled(false);
         yield browser_wrapper_1.default.get(Constant_1.InContactLink.LOCAL);
+        yield browser_wrapper_1.default.maximize();
     }));
     afterEach(() => __awaiter(this, void 0, void 0, function* () {
     }));

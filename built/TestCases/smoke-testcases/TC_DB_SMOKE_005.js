@@ -19,7 +19,6 @@ const User_1 = __importDefault(require("@page-objects/User"));
 const Constant_1 = require("@Utilities/Constant");
 const Constant_2 = require("@Utilities/Constant");
 const cluster_1 = require("@data-objects/general/cluster");
-const test_info_1 = __importDefault(require("@data-objects/general/test-info"));
 const testbase_1 = require("@testcases/testbase");
 describe('navigate between pages', function () {
     testbase_1.testBase();
@@ -27,26 +26,34 @@ describe('navigate between pages', function () {
         let username = Constant_1.Login.ADMIN;
         let password = Constant_1.Login.ADMINPASS;
         let user = new User_1.default(username, password);
-        let browserName = Constant_2.BrowserName.CHROME;
-        let custerName = cluster_1.ClusterID.TO31;
-        let testName = "CXone Sanity";
-        let testNameWithBrowserAndCluster = `${testName} - ${custerName} - ${browserName}`;
-        let dateRange = "Latest";
-        let testInfo = new test_info_1.default(browserName, custerName, testName);
+        let browserName1 = Constant_2.BrowserName.CHROME;
+        let custerName1 = cluster_1.ClusterID.TO31;
+        let testName1 = "CXone Sanity";
+        let browserName2 = Constant_2.BrowserName.CHROME;
+        let custerName2 = cluster_1.ClusterID.TO32;
+        let testName2 = "CXone Sanity";
+        let testNameWithBrowserAndCluster1 = `${testName1} - ${custerName1} - ${browserName1}`;
+        let testNameWithBrowserAndCluster2 = `${testName2} - ${custerName2} - ${browserName2}`;
         let loginPage = new login_page_1.default();
         let dashBoard = yield loginPage.loginSuccesful(user);
-        let testResultPage = yield dashBoard.gotoTestResultPage();
-        yield testResultPage.waitingForLoadingDisapearTest(40, 5);
-        yield testResultPage.searchTest(testNameWithBrowserAndCluster);
-        yield testResultPage.waitingForLoadingDisapearTest(40, 5);
-        expect(yield testResultPage.isLastestTestResultDisplay(testNameWithBrowserAndCluster)).toBe(true, "test result is not display");
-        let errorList = yield testResultPage.checkTestResultDisplayCorrectly(testInfo);
-        if (errorList.length !== 0) {
-            errorList.forEach(element => {
+        let reportingPage = yield dashBoard.gotoReportingPage();
+        yield reportingPage.waitingForLoadingDisapear(40, 10);
+        yield reportingPage.selectTestToReport(testNameWithBrowserAndCluster1, custerName1, false, 1);
+        yield reportingPage.selectTestToReport(testNameWithBrowserAndCluster2, custerName2, false, 2);
+        let checkError1 = yield reportingPage.checkReportDisplayCorrectly(browserName1, custerName1, 1);
+        let checkError2 = yield reportingPage.checkReportDisplayCorrectly(browserName2, custerName2, 2);
+        if (checkError1.length !== 0) {
+            checkError1.forEach(element => {
                 console.log(element);
             });
-            throw new Error("Test result displayed not correctly");
+            throw new Error("Reporting 1 displayed not correctly");
+        }
+        if (checkError2.length !== 0) {
+            checkError2.forEach(element => {
+                console.log(element);
+            });
+            throw new Error("Reporting 2 displayed not correctly");
         }
     }));
 });
-//# sourceMappingURL=TC_DB_SMOKE_004.js.map
+//# sourceMappingURL=TC_DB_SMOKE_005.js.map

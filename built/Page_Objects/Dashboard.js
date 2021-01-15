@@ -28,6 +28,7 @@ class Dashboard {
         this._title = "//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]";
         this.elementwrapperOfTitle = new element_wrapper_1.default(protractor_1.by.xpath("//div[@class='container-fluid bg-tmdblack shadow-sm page-header']//span[.]"));
         this.elementloadingpageHidden = new element_wrapper_1.default(protractor_1.by.xpath("//div[@id='loading-screen-container'][@hidden='hidden']"));
+        this.elementOfHidden = new element_wrapper_1.default(protractor_1.by.xpath("//div[@hidden='hidden']"));
         this.elementCustomScrollBar = new element_wrapper_1.default(protractor_1.by.xpath("//body[@class='custom-scrollbar']"));
         this._helloUser = "//li[@class='nav-item dropdown nav-item-highlight'] //a[@id='navbardrop']";
         this._profileDropdown = "//li[@class='nav-item dropdown nav-item-highlight show'] //div[@class='dropdown-menu dropdown-menu-right show']";
@@ -107,6 +108,32 @@ class Dashboard {
                     }
                 }
                 if ((yield this.elementCustomScrollBar.getAttribute("style")) === "overflow-y: visible;") {
+                    General_1.General.printDescribe(`element of Loading is disapeared at ${stopWatch.getElapsedTimeInSecond()}s`);
+                }
+                else {
+                    throw new Error("Element of Loading has not been disapeared");
+                }
+                return this;
+            }
+            catch (err) {
+                throw new error_wrapper_1.errorwrapper.CustomError(this.waitingForLoadingDisapear, err.message);
+            }
+        });
+    }
+    waitingForLoadingDisapearTest(timeOUt = 10, expectTimeOut) {
+        return __awaiter(this, void 0, void 0, function* () {
+            General_1.General.printDescribe("Waiting element of title Loading disapear Test");
+            try {
+                let stopWatch = new stop_watch_1.default();
+                stopWatch.startClock();
+                let flagPassExpect = 1;
+                while ((stopWatch.getTimeLeftInSecond(timeOUt) > 0) && (((yield protractor_1.element.all(protractor_1.by.xpath("//div[@hidden='hidden']"))).length) === 0)) {
+                    if ((stopWatch.getElapsedTimeInSecond() >= expectTimeOut) && flagPassExpect === 1) {
+                        General_1.General.printDescribe(`${expectTimeOut}s is passed but element has not been disapeared`);
+                        flagPassExpect = 0;
+                    }
+                }
+                if (((yield protractor_1.element.all(protractor_1.by.xpath("//div[@hidden='hidden']"))).length) !== 0) {
                     General_1.General.printDescribe(`element of Loading is disapeared at ${stopWatch.getElapsedTimeInSecond()}s`);
                 }
                 else {

@@ -66,8 +66,8 @@ export default class TestResultsPage extends Dashboard {
         }
     }
 
-    public async checkTestResultDisplayCorrectly(testInfo: TestInfo) {
-        let error = [];
+    public async checkTestResultDisplayCorrectly(testInfo: TestInfo) : Promise<string[]> {
+        let error:string[] = [];
         if (await this.elementTestBrowserInfo.getText() !== testInfo.getBrowser()){
             error.push("Browser is not correct");
         }
