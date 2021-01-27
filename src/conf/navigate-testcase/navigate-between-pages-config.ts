@@ -1,5 +1,6 @@
 // require('module-alias/register');
 import ProjectPath from '../../test-data/general/project-path';
+
 import { Config } from 'protractor';
 
 export let config: Config = {
@@ -12,11 +13,18 @@ export let config: Config = {
     framework: 'jasmine',
     capabilities: {
         browserName: 'chrome',
-
-        chromeOptions: {
-            //     'args': ["--headless", "--disable-gpu", "--window-size=800,600"]
-            useAutomationExtension: false,
+        'chromeOptions': {
+            'excludeSwitches': ['enable-automation'],
         }
+        // chromeOptions: {
+        //     //     'args': ["--headless", "--disable-gpu", "--window-size=800,600"]
+        //     'excludeSwitches': ['enable-automation'],
+        //     // useAutomationExtension: false,
+        //     perfLoggingPrefs: {
+        //         // traceCategories: 'browser,devtools.timeline,devtools,performance',
+        //         enableNetwork: true,
+        //     },
+        // }
     },
 
     seleniumAddress: 'http://localhost:4444/wd/hub',

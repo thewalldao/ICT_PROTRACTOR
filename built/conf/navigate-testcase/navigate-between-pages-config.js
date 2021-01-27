@@ -12,8 +12,8 @@ exports.config = {
     framework: 'jasmine',
     capabilities: {
         browserName: 'chrome',
-        chromeOptions: {
-            useAutomationExtension: false,
+        'chromeOptions': {
+            'excludeSwitches': ['enable-automation'],
         }
     },
     seleniumAddress: 'http://localhost:4444/wd/hub',
