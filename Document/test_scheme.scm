@@ -45,9 +45,11 @@
 (display "-----------------------\n")
 (display "EX 1.3:\n")
 
-(define (square x) (* x x))
+(define (square x)
+  (* x x))
 
-(define (squareSum x y) (+ (square x) (square y)))
+(define (squareSum x y)
+  (+ (square x) (square y)))
 
 (define (sumOfLargestTwoSquared x y z)
   (cond ((and (>= (+ x y) (+ y z)) (>= (+ x y) (+ x z))) (squareSum x y))
@@ -91,3 +93,39 @@
 ;; (if (= 0 0) 0 (p))
 ;; (if #t 0 (p))
 ;; 0
+
+
+(display "-----------------------\n")
+(display "EX 1.6:\n")
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.000000000000001))
+
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x) guess
+      (sqrt-iter (improve guess x) x)))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
+
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+
+(define (sqrt-iter1 guess x)
+  (new-if (good-enough? guess x)
+          guess
+          (sqrt-iter (improve guess x) x)))
+
+(define (sqrt1 x)
+  (sqrt-iter1 1.0 x))
+
+(sqrt 0.0000000000001)
+;; (display (sqrt1 16))
+(display (sqrt 6e-324))
